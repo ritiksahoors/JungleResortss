@@ -125,17 +125,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
 window.addEventListener("load", function () {
 
-    let loader = document.getElementById("loader");
+    const loader = document.getElementById("loader");
 
-    setTimeout(() => {
+    // minimum loader time
+    const minTime = 600;
+
+    const startTime = Date.now();
+
+    function hideLoader() {
 
         loader.style.opacity = "0";
+        loader.style.transition = "0.5s";
 
         setTimeout(() => {
             loader.style.display = "none";
         }, 500);
+    }
 
-    }, 600);
+    const elapsed = Date.now() - startTime;
+
+    if (elapsed >= minTime) {
+        hideLoader();
+    } else {
+        setTimeout(hideLoader, minTime - elapsed);
+    }
 
 });
 

@@ -2033,6 +2033,7 @@ body {
 
     .jc-slider-track {
         height: 260px;
+        margin-top: 25px;
     }
 
     .jc-eco-title {
