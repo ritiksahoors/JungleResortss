@@ -469,9 +469,9 @@ img , .jungle-tracks img , .stay-img-box img , .gallery-card img , .gallery-item
         width: 48%;
     }
 
-    .img3 {
+    /* .img3 {
         display: none;
-    }
+    } */
 
     .about-title {
         font-size: 30px;

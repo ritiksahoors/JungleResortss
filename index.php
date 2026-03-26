@@ -748,7 +748,7 @@
 
 
 
-                <div class="col-lg-6" data-aos="fade-left">
+                <div class="col-lg-6 mt-0 mb-5" data-aos="fade-left">
 
                     <div class="ae-activity-gallery py-sm-5">
 
