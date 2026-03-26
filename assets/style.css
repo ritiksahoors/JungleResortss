@@ -1637,6 +1637,34 @@ body {
     color: #73B805;
 }
 
+/* Modal Design */
+
+.jungle-fancy-modal {
+    border-radius: 15px;
+    border: none;
+}
+
+/* IMAGE SLIDER */
+
+.jungle-modal-gallery {
+    overflow: hidden;
+    border-radius: 12px;
+    width: 100%;
+    height: 250px;
+}
+
+.jungle-modal-track {
+    display: flex;
+    width: 200%;
+    transition: 0.5s ease;
+}
+
+.jungle-modal-track img {
+    width: 50%;
+    height: 250px;
+    object-fit: cover;
+}
+
 /* Food And All  */
 
 .jungle-food {

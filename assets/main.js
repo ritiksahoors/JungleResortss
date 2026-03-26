@@ -101,6 +101,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+// CARD SLIDER
+
 const jungleTracks = document.querySelectorAll('.jungle-track')
 
 jungleTracks.forEach(track => {
@@ -111,15 +113,56 @@ jungleTracks.forEach(track => {
 
         index++
 
-        if (index > 1) {
-            index = 0
-        }
+        if (index > 1) index = 0
 
         track.style.transform = `translateX(-${index * 50}%)`
 
     }, 3000)
 
 })
+
+// MODAL DATA FETCH
+
+const buttons = document.querySelectorAll(".book-btn")
+
+const modalTitle = document.getElementById("modalTitle")
+const modalDesc = document.getElementById("modalDesc")
+const modalPrice = document.getElementById("modalPrice")
+
+const modalImg1 = document.getElementById("jungleModalImg1")
+const modalImg2 = document.getElementById("jungleModalImg2")
+
+buttons.forEach(btn => {
+
+    btn.addEventListener("click", function () {
+
+        modalTitle.innerText = this.dataset.title
+        modalDesc.innerText = this.dataset.desc
+        modalPrice.innerText = "₹ " + this.dataset.price + " / Night"
+
+        modalImg1.src = this.dataset.img1
+        modalImg2.src = this.dataset.img2
+
+    })
+
+})
+
+// MODAL IMAGE SLIDER
+
+const jungleModalTrack = document.getElementById("jungleModalTrack")
+
+let jungleModalIndex = 0
+
+setInterval(() => {
+
+    jungleModalIndex++
+
+    if (jungleModalIndex > 1) jungleModalIndex = 0
+
+    jungleModalTrack.style.transform =
+        `translateX(-${jungleModalIndex * 50}%)`
+
+}, 3000)
 
 /* ================= LOADER ================= */
 
