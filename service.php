@@ -792,14 +792,14 @@
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
 
             // BOOKING
             let selected = {}
             let price = 0
 
             document.querySelectorAll(".book-btn").forEach(btn => {
-                btn.onclick = function () {
+                btn.onclick = function() {
 
                     selected = this.dataset
                     price = Number(selected.price)
@@ -814,7 +814,7 @@
             })
 
             // NEXT MODAL
-            document.getElementById("goForm").onclick = function () {
+            document.getElementById("goForm").onclick = function() {
 
                 bootstrap.Modal.getInstance(document.getElementById('detailsModal')).hide()
 
@@ -865,7 +865,7 @@
             }
 
             // MANUAL CHANGE (fallback)
-            daysInput.addEventListener("input", function () {
+            daysInput.addEventListener("input", function() {
 
                 let days = Number(this.value)
 
@@ -875,7 +875,7 @@
             })
 
             // FINAL BOOK
-            document.getElementById("finalBook").onclick = function () {
+            document.getElementById("finalBook").onclick = function() {
 
                 bootstrap.Modal.getInstance(document.getElementById('formModal')).hide()
 

@@ -3,15 +3,15 @@ const carousel = document.querySelector('#gallerySlider')
 
 cards.forEach(card => {
 
-card.addEventListener('click', function(){
+    card.addEventListener('click', function () {
 
-let slideIndex = this.getAttribute('data-slide')
+        let slideIndex = this.getAttribute('data-slide')
 
-const bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel)
+        const bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel)
 
-bsCarousel.to(slideIndex)
+        bsCarousel.to(slideIndex)
 
-})
+    })
 
 })
 
@@ -19,25 +19,25 @@ const counters = document.querySelectorAll(".counter");
 
 counters.forEach(counter => {
 
-counter.innerText = "0";
+    counter.innerText = "0";
 
-const update = () => {
+    const update = () => {
 
-const target = +counter.getAttribute("data-target");
-const c = +counter.innerText;
+        const target = +counter.getAttribute("data-target");
+        const c = +counter.innerText;
 
-const increment = target / 200;
+        const increment = target / 200;
 
-if(c < target){
-counter.innerText = `${Math.ceil(c + increment)}`;
-setTimeout(update,10);
-}else{
-counter.innerText = target;
-}
+        if (c < target) {
+            counter.innerText = `${Math.ceil(c + increment)}`;
+            setTimeout(update, 10);
+        } else {
+            counter.innerText = target;
+        }
 
-};
+    };
 
-update();
+    update();
 
 });
 document.addEventListener("DOMContentLoaded", function () {
@@ -101,25 +101,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-// const jungleTracks = document.querySelectorAll('.jungle-track')
+const jungleTracks = document.querySelectorAll('.jungle-track')
 
-// jungleTracks.forEach(track => {
+jungleTracks.forEach(track => {
 
-// let index = 0
+    let index = 0
 
-// setInterval(()=>{
+    setInterval(() => {
 
-// index++
+        index++
 
-// if(index>1){
-// index=0
-// }
+        if (index > 1) {
+            index = 0
+        }
 
-// track.style.transform=`translateX(-${index*50}%)`
+        track.style.transform = `translateX(-${index * 50}%)`
 
-// },3000)
+    }, 3000)
 
-// })
+})
 
 /* ================= LOADER ================= */
 
@@ -331,4 +331,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 })
-    
