@@ -10,27 +10,19 @@ if (isset($_GET['delete'], $_GET['tb'], $_GET['returnpage'], $_GET['tbc'])) {
 
     // Image columns list
     $imageColumns = [
-        'banner_image',
         'image',
-        'pdf_upload',
-        'category_image',
-        'product_image1',
-        'product_image2',
-        'product_image3',
-        'product_image4',
-        'pdf',
-        'image1',
-        'image2',
-        'image3',
-        'image4'
+        'img',
+        'room_img',
+        'room_img2'
     ];
 
     // Folder paths
     $paths = [
+        "activities" => "upload/activities",
+        "adventure" => "upload/adventure",
         "banner" => "upload/banner",
-        "folder" => "upload/catalogue/image",
-        "pdfupload" => "upload/catalogue/pdf",
-        "product" => "upload/product",
+        "dining" => "upload/dining",
+        "gallery" => "upload/gallery",
         "service" => "upload/service"
     ];
 

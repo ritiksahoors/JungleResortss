@@ -46,17 +46,11 @@ function confirmAction(action, id, tb, tbc, tbc1, returnpage, extra) {
     return false;
 }
 
-/* for banner id get */
-function myfcn1(idx, heading, image) {
-    document.getElementById("id11").value = idx;
-    document.getElementById("descc1").value = heading;
-    document.getElementById("image11").src = "upload/banner/" + image;
-}
-
 /* for service id get */
-function myfcn2(idx, image2, service_nm1, price1) {
+function myfcn2(idx, image122, ser_image, service_nm1, price1) {
     document.getElementById("id2").value = idx;
-    document.getElementById("image12").src = "upload/service/" + image2;
+    document.getElementById("image122").src = "upload/service/" + image122;
+    document.getElementById("ser_image").src = "upload/service/" + ser_image;
     document.getElementById("service_nm1").value = service_nm1;
     document.getElementById("price1").value = price1;
 }
@@ -102,5 +96,13 @@ function myfcn8(idx, user_nm, pass_word1, phone_number, email_id) {
     document.getElementById("phone_number").value = phone_number;
     document.getElementById("email_id").value = email_id;
 }
+
+/* for user id get */
+function myfcn9(idx, ban_img, bann_desc) {
+    document.getElementById("id9").value = idx;
+    document.getElementById("ban_img").src = "upload/activities/" + ban_img;
+    document.getElementById("bann_desc").value = bann_desc;
+}
+
 
 

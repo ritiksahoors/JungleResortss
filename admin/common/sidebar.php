@@ -50,7 +50,7 @@ $current_page = basename($_SERVER['PHP_SELF'], ".php");
                     <a href="service.php" class="nav-link <?php if ($current_page == 'service')
                         echo 'active'; ?>">
                         <i class="fa fa-cogs nav-icon"></i>
-                        <p>Services</p>
+                        <p>Rooms</p>
                     </a>
                 </li>
 

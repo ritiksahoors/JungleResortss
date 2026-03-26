@@ -5,9 +5,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Document</title>
-
+    <title>Jungle Resort | Service</title>
+    <link href="assets/img/main_logo.png" rel="icon">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -132,178 +131,49 @@
 
 
             <div class="row g-4">
+                <?php
+                include 'admin/conn.php';
+                $sql3 = "SELECT * FROM servicee WHERE status='1'";
+                $result3 = $conn->query($sql3);
+                while ($row3 = $result3->fetch_assoc()) {
+                    ?>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
 
-                <!-- CARD -->
+                        <div class="jungle-card">
 
-                <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="jungle-slider">
 
-                    <div class="jungle-card">
+                                <div class="jungle-track">
 
-                        <div class="jungle-slider">
+                                    <img src="admin/upload/service/<?php echo $row3['room_img']; ?>">
 
-                            <div class="jungle-track">
+                                    <img src="admin/upload/service/<?php echo $row3['room_img2']; ?>">
 
-                                <img src="assets/img/wooden-cottage1.webp">
+                                </div>
 
-                                <img src="assets/img/wooden-cottage2.webp">
+                            </div>
 
+                            <div class="jungle-label"><?php echo $row3['room_nm']; ?></div>
+
+                            <div class="jungle-bottom">
+                                <span class="price">₹
+                                    <?php echo $row3['pricee']; ?> / Night
+                                </span>
+                                <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
+                                    data-img="assets/img/wooden-cottage1.webp"
+                                    data-desc="Luxury wooden stay with jungle vibes 🌿">
+                                    Book Now
+                                </button>
                             </div>
 
                         </div>
 
-                        <div class="jungle-label">🌿 Premium Wooden Cottage</div>
-
-                        <div class="jungle-bottom">
-                            <span class="price">₹4,999 / Night</span>
-                            <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
-                                data-img="assets/img/wooden-cottage1.webp"
-                                data-desc="Luxury wooden stay with jungle vibes 🌿">
-                                Book Now
-                            </button>
-                        </div>
-
                     </div>
 
-                </div>
 
+                    <!-- CARD -->
 
-                <!-- CARD -->
-
-                <div class="col-lg-4 col-md-4 col-sm-12">
-
-                    <div class="jungle-card">
-
-                        <div class="jungle-slider">
-
-                            <div class="jungle-track">
-
-                                <img src="assets/img/banjara-cottage1.webp">
-
-                                <img src="assets/img/banjara-cottage1.webp">
-
-                            </div>
-
-                        </div>
-
-                        <div class="jungle-label">🏕 Banjara Tent</div>
-
-                        <div class="jungle-bottom">
-                            <span class="price">₹4,999 / Night</span>
-                            <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
-                                data-img="assets/img/wooden-cottage1.webp"
-                                data-desc="Luxury wooden stay with jungle vibes 🌿">
-                                Book Now
-                            </button>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- CARD -->
-
-                <div class="col-lg-4 col-md-4 col-sm-12">
-
-                    <div class="jungle-card">
-
-                        <div class="jungle-slider">
-
-                            <div class="jungle-track">
-
-                                <img src="assets/img/poool-villa1.webp">
-
-                                <img src="assets/img/poool-villa1.webp">
-
-                            </div>
-
-                        </div>
-
-                        <div class="jungle-label">🏊 Pool Villa</div>
-
-                        <div class="jungle-bottom">
-                            <span class="price">₹4,999 / Night</span>
-                            <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
-                                data-img="assets/img/wooden-cottage1.webp"
-                                data-desc="Luxury wooden stay with jungle vibes 🌿">
-                                Book Now
-                            </button>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- CARD -->
-
-                <div class="col-lg-4 col-md-4 col-sm-12 ">
-
-                    <div class="jungle-card">
-
-                        <div class="jungle-slider">
-
-                            <div class="jungle-track">
-
-                                <img src="assets/img/pool-swiss.webp">
-
-                                <img src="assets/img/pool-swiss.webp">
-
-                            </div>
-
-                        </div>
-
-                        <div class="jungle-label">👑 Royal Swiss Tent</div>
-
-                        <div class="jungle-bottom">
-                            <span class="price">₹4,999 / Night</span>
-                            <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
-                                data-img="assets/img/wooden-cottage1.webp"
-                                data-desc="Luxury wooden stay with jungle vibes 🌿">
-                                Book Now
-                            </button>
-                        </div>
-
-                    </div>
-
-                </div>
-                <!-- CARD -->
-
-                <div class="col-lg-4 col-md-4 col-sm-12 ">
-
-                    <div class="jungle-card">
-
-                        <div class="jungle-slider">
-
-                            <div class="jungle-track">
-
-                                <img src="assets/img/wooden-cottage1.webp">
-
-                                <img src="assets/img/wooden-cottage2.webp">
-
-                            </div>
-
-                        </div>
-
-                        <div class="jungle-label">🌿 Premium Wooden Cottage</div>
-
-                        <div class="jungle-bottom">
-                            <span class="price">₹4,999 / Night</span>
-                            <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
-                                data-img="assets/img/wooden-cottage1.webp"
-                                data-desc="Luxury wooden stay with jungle vibes 🌿">
-                                Book Now
-                            </button>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- CARD -->
-
-                <div class="col-lg-4 col-md-4 col-sm-12 ">
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-12">
 
                     <div class="jungle-card">
 
@@ -332,12 +202,12 @@
 
                     </div>
 
-                </div>
+                </div> -->
 
 
-                <!-- CARD -->
+                    <!-- CARD -->
 
-                <div class="col-lg-4 col-md-4 col-sm-12 ">
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-12">
 
                     <div class="jungle-card">
 
@@ -366,12 +236,12 @@
 
                     </div>
 
-                </div>
+                </div> -->
 
 
-                <!-- CARD -->
+                    <!-- CARD -->
 
-                <div class="col-lg-4 col-md-4 col-sm-12 ">
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-12 ">
 
                     <div class="jungle-card">
 
@@ -400,9 +270,143 @@
 
                     </div>
 
-                </div>
+                </div> -->
+                    <!-- CARD -->
+
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-12 ">
+
+                    <div class="jungle-card">
+
+                        <div class="jungle-slider">
+
+                            <div class="jungle-track">
+
+                                <img src="assets/img/wooden-cottage1.webp">
+
+                                <img src="assets/img/wooden-cottage2.webp">
+
+                            </div>
+
+                        </div>
+
+                        <div class="jungle-label">🌿 Premium Wooden Cottage</div>
+
+                        <div class="jungle-bottom">
+                            <span class="price">₹4,999 / Night</span>
+                            <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
+                                data-img="assets/img/wooden-cottage1.webp"
+                                data-desc="Luxury wooden stay with jungle vibes 🌿">
+                                Book Now
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div> -->
 
 
+                    <!-- CARD -->
+
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-12 ">
+
+                    <div class="jungle-card">
+
+                        <div class="jungle-slider">
+
+                            <div class="jungle-track">
+
+                                <img src="assets/img/banjara-cottage1.webp">
+
+                                <img src="assets/img/banjara-cottage1.webp">
+
+                            </div>
+
+                        </div>
+
+                        <div class="jungle-label">🏕 Banjara Tent</div>
+
+                        <div class="jungle-bottom">
+                            <span class="price">₹4,999 / Night</span>
+                            <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
+                                data-img="assets/img/wooden-cottage1.webp"
+                                data-desc="Luxury wooden stay with jungle vibes 🌿">
+                                Book Now
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div> -->
+
+
+                    <!-- CARD -->
+
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-12 ">
+
+                    <div class="jungle-card">
+
+                        <div class="jungle-slider">
+
+                            <div class="jungle-track">
+
+                                <img src="assets/img/poool-villa1.webp">
+
+                                <img src="assets/img/poool-villa1.webp">
+
+                            </div>
+
+                        </div>
+
+                        <div class="jungle-label">🏊 Pool Villa</div>
+
+                        <div class="jungle-bottom">
+                            <span class="price">₹4,999 / Night</span>
+                            <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
+                                data-img="assets/img/wooden-cottage1.webp"
+                                data-desc="Luxury wooden stay with jungle vibes 🌿">
+                                Book Now
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div> -->
+
+
+                    <!-- CARD -->
+
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-12 ">
+
+                    <div class="jungle-card">
+
+                        <div class="jungle-slider">
+
+                            <div class="jungle-track">
+
+                                <img src="assets/img/pool-swiss.webp">
+
+                                <img src="assets/img/pool-swiss.webp">
+
+                            </div>
+
+                        </div>
+
+                        <div class="jungle-label">👑 Royal Swiss Tent</div>
+
+                        <div class="jungle-bottom">
+                            <span class="price">₹4,999 / Night</span>
+                            <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
+                                data-img="assets/img/wooden-cottage1.webp"
+                                data-desc="Luxury wooden stay with jungle vibes 🌿">
+                                Book Now
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div> -->
+
+                <?php } ?>
             </div>
 
         </div>
@@ -495,28 +499,27 @@
     <section class="jc-eco-adventure-section py-5">
 
         <div class="container">
-
             <div class="row align-items-center">
-
                 <!-- LEFT IMAGE SLIDER -->
                 <div class="col-lg-6 order-2 order-lg-1">
-
                     <div class="jc-slider-wrapper">
-
                         <div class="jc-slider-track mt-sm-5">
-
-                            <img src="assets/img/About_us.webp" class="jc-slide jc-active-slide">
-                            <img src="assets/img/About_us2.webp" class="jc-slide">
-                            <img src="assets/img/About_us3.webp" class="jc-slide">
-                            <img src="assets/img/JC_BANNER_1-copy-1.webp" class="jc-slide">
-
+                            <?php
+                            include 'admin/conn.php';
+                            $sql5 = "SELECT * FROM activities WHERE status='1' LIMIT 4";
+                            $result5 = $conn->query($sql5);
+                            while ($row5 = $result5->fetch_assoc()) {
+                                ?>
+                                <img src="admin/upload/activities/<?php echo $row5['image']; ?>"
+                                    class="jc-slide jc-active-slide">
+                                <!-- <img src="assets/img/About_us2.webp" class="jc-slide">
+                                <img src="assets/img/About_us3.webp" class="jc-slide">
+                                <img src="assets/img/JC_BANNER_1-copy-1.webp" class="jc-slide"> -->
+                            <?php } ?>
                         </div>
-
                         <!-- dots -->
                         <div class="jc-slider-dots"></div>
-
                     </div>
-
                 </div>
 
 
@@ -645,34 +648,33 @@
     </section>
 
     <section class="stay-section py-5">
-
         <div class="container">
-
             <div class="text-center mb-5">
-
                 <h2>Dining</h2>
                 <p>Comfortable accommodation with delicious food</p>
-
             </div>
-
             <div class="row g-4">
+                <?php
+                include 'admin/conn.php';
+                $sql6 = "SELECT * FROM dining WHERE status='1'";
+                $result6 = $conn->query($sql6);
+                while ($row6 = $result6->fetch_assoc()) {
+                    ?>
+                    <div class="col-md-4" data-aos="fade-up">
+                        <div class="stay-img-box">
 
-                <!-- LUXURY TENTS -->
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="stay-img-box">
+                            <img src="admin/upload/dining/<?php echo $row6['image']; ?>" class="img-fluid">
 
-                        <img src="assets/img/banjara-cottage1.webp" class="img-fluid">
+                            <div class="stay-overlay">
+                                <h5><?php echo $row6['heading']; ?></h5>
+                                <p><?php echo $row6['descc']; ?></p>
+                            </div>
 
-                        <div class="stay-overlay">
-                            <h5>Luxury Tents</h5>
-                            <p>Comfortable jungle tents with modern facilities.</p>
                         </div>
-
                     </div>
-                </div>
 
-                <!-- CAMPFIRE -->
-                <div class="col-md-4" data-aos="fade-up">
+                    <!-- CAMPFIRE -->
+                    <!-- <div class="col-md-4" data-aos="fade-up">
                     <div class="stay-img-box">
 
                         <img src="assets/img/About_us.webp" class="img-fluid">
@@ -683,10 +685,10 @@
                         </div>
 
                     </div>
-                </div>
+                </div> -->
 
-                <!-- ORGANIC FOOD -->
-                <div class="col-md-4" data-aos="fade-up">
+                    <!-- ORGANIC FOOD -->
+                    <!-- <div class="col-md-4" data-aos="fade-up">
                     <div class="stay-img-box">
 
                         <img src="assets/img/activity2.jpeg" class="img-fluid">
@@ -697,8 +699,8 @@
                         </div>
 
                     </div>
-                </div>
-
+                </div> -->
+                <?php } ?>
             </div>
 
         </div>
@@ -792,14 +794,14 @@
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
 
             // BOOKING
             let selected = {}
             let price = 0
 
             document.querySelectorAll(".book-btn").forEach(btn => {
-                btn.onclick = function() {
+                btn.onclick = function () {
 
                     selected = this.dataset
                     price = Number(selected.price)
@@ -814,7 +816,7 @@
             })
 
             // NEXT MODAL
-            document.getElementById("goForm").onclick = function() {
+            document.getElementById("goForm").onclick = function () {
 
                 bootstrap.Modal.getInstance(document.getElementById('detailsModal')).hide()
 
@@ -865,7 +867,7 @@
             }
 
             // MANUAL CHANGE (fallback)
-            daysInput.addEventListener("input", function() {
+            daysInput.addEventListener("input", function () {
 
                 let days = Number(this.value)
 
@@ -875,7 +877,7 @@
             })
 
             // FINAL BOOK
-            document.getElementById("finalBook").onclick = function() {
+            document.getElementById("finalBook").onclick = function () {
 
                 bootstrap.Modal.getInstance(document.getElementById('formModal')).hide()
 
