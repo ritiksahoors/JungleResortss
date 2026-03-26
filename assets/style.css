@@ -865,7 +865,7 @@ img , .jungle-tracks img , .stay-img-box img , .gallery-card img , .gallery-item
 /* CONTACT MAIN */
 
 .contact-main {
-    padding: 80px 0;
+    /* padding: 80px 0; */
     background: #f8fafc;
 }
 
@@ -998,7 +998,7 @@ body {
 /* mission */
 .mission-section {
     background: #f8f9fa;
-    padding: 80px 0;
+    /* padding: 80px 0; */
 }
 
 /* CONTENT */
@@ -1047,9 +1047,10 @@ body {
 /* stats */
 
 .stats-section {
-    background: #ffffff;
+    /* background: #ffffff; */
+    background: #f8f9fa;
     color: black;
-    padding: 70px 0;
+    /* padding: 70px 0; */
 }
 
 .stats-section h2 {
@@ -1873,6 +1874,16 @@ body {
         font-size: 12px;
     }
 
+    .why-image {
+        margin-bottom: 2rem;
+    }
+
+}
+
+.events-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 40px;
 }
 
 /* -------------------------- */

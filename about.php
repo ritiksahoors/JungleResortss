@@ -122,7 +122,7 @@
 
     </section>
 
-    <section class="mission-section">
+    <section class="mission-section pb-5">
 
         <div class="container">
 
@@ -271,7 +271,7 @@
 
     </section>
 
-    <section class="stats-section">
+    <section class="stats-section py-5">
 
         <div class="container">
 

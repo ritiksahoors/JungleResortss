@@ -750,7 +750,7 @@
 
                 <div class="col-lg-6" data-aos="fade-left">
 
-                    <div class="ae-activity-gallery">
+                    <div class="ae-activity-gallery py-sm-5">
 
                         <img src="assets/img/activity1.jpeg" class="img1">
 
@@ -957,50 +957,51 @@
 
     </section>
 
-    <section class="events-section p-5">
+<section class="events-section p-5">
 
-        <div class="events-wrapper">
+    <div class="events-wrapper">
 
-            <div class="events-grid">
+        <!-- TEXT FIRST ON MOBILE -->
+        <div class="events-content order-1 order-lg-2">
 
-                <img src="assets/img/activity1.jpeg">
-                <img src="assets/img/activity2.jpeg">
-                <img src="assets/img/activity3.jpeg">
-                <img src="assets/img/activity4.jpeg">
+            <span class="events-mini">EVENTS</span>
 
-            </div>
+            <h2>
+                Jungle Vows & <span>Cricket Matches</span>
+            </h2>
 
+            <p>
+                Offering a <b>1 lac sq. ft. field</b>, Jungle Camp invites you to soak in the perfect
+                blend of nature and celebration. Our picturesque venue hosts extravagant
+                <b>destination weddings</b> amidst lush greenery for couples seeking a magical
+                eco-friendly experience.
+            </p>
 
-            <div class="events-content">
+            <p>
+                For sports lovers, our massive field is perfect for thrilling
+                <b>cricket matches and fun activities</b>. Let love bloom and your
+                sports keeda thrive in the heart of nature.
+            </p>
 
-                <span class="events-mini">EVENTS</span>
-
-                <h2>
-                    Jungle Vows & <span>Cricket Matches</span>
-                </h2>
-
-                <p>
-                    Offering a <b>1 lac sq. ft. field</b>, Jungle Camp invites you to soak in the perfect
-                    blend of nature and celebration. Our picturesque venue hosts extravagant
-                    <b>destination weddings</b> amidst lush greenery for couples seeking a magical
-                    eco-friendly experience.
-                </p>
-
-                <p>
-                    For sports lovers, our massive field is perfect for thrilling
-                    <b>cricket matches and fun activities</b>. Let love bloom and your
-                    sports keeda thrive in the heart of nature.
-                </p>
-
-                <p class="events-highlight">
-                    ✨ Experience the magic of Jungle Camp – where love, nature, and adventure unite!
-                </p>
-
-            </div>
+            <p class="events-highlight">
+                ✨ Experience the magic of Jungle Camp – where love, nature, and adventure unite!
+            </p>
 
         </div>
 
-    </section>
+        <!-- IMAGE GRID -->
+        <div class="events-grid order-2 order-lg-1">
+
+            <img src="assets/img/activity1.jpeg">
+            <img src="assets/img/activity2.jpeg">
+            <img src="assets/img/activity3.jpeg">
+            <img src="assets/img/activity4.jpeg">
+
+        </div>
+
+    </div>
+
+</section>
 
 
     <section class="gallery-section py-5">

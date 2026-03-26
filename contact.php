@@ -150,7 +150,7 @@
 
     </section>
 
-    <section class="contact-main">
+    <section class="contact-main pt-5">
 
         <div class="container">
 
@@ -236,7 +236,7 @@
 
     </section>
 
-    <section class="contact-map">
+    <section class="contact-map py-5">
 
         <div class="container">
 
