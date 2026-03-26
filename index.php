@@ -70,58 +70,58 @@
         <i class="bi bi-arrow-up"></i>
     </button>
     <section class="hero-slider mt-5">
-    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
 
-        <div class="carousel-inner">
-            <?php
+            <div class="carousel-inner">
+                <?php
                 include 'admin/conn.php';
                 $sql10 = "SELECT * FROM banner WHERE status='1'";
                 $result10 = $conn->query($sql10);
 
                 $i = 0; // counter
-                
+
                 while ($row10 = $result10->fetch_assoc()) {
 
                     // Only first item active
                     $active = ($i == 0) ? 'active' : '';
-                    ?>
+                ?>
                     <div class="carousel-item <?php echo $active; ?>">
                         <div class="hero-slide">
                             <img src="admin/upload/banner/<?php echo $row10['img']; ?>" class="hero-img w-100">
-    
+
                             <div class="hero-content container">
                                 <p class="mb-0">
                                     <i class="bi bi-geo-alt"></i> Puri Konark Marine Drive, Beldal, Odisha
                                 </p>
-    
+
                                 <h1>
                                     Welcome to
                                     <span>Jungle Camp Resort,</span>
                                     Puri
                                 </h1>
-    
+
                                 <h4><?php echo $row10['descc']; ?></h4>
-    
+
                                 <h5>Call or WhatsApp Us : +91-7064478501</h5>
                             </div>
                         </div>
                     </div>
-                    <?php
+                <?php
                     $i++;
                 }
                 ?>
             </div>
-    
+
             <!-- Prev Button -->
             <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </button>
-    
+
             <!-- Next Button -->
             <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </button>
-    
+
         </div>
     </section>
     <section class="about-section py-5">
@@ -634,7 +634,7 @@
                         $sql2 = "SELECT * FROM adven WHERE status='1'";
                         $result2 = $conn->query($sql2);
                         while ($row2 = $result2->fetch_assoc()) {
-                            ?>
+                        ?>
                             <img src="admin/upload/adventure/<?php echo $row2['image']; ?>" class="img1">
 
                             <!-- <img src="assets/img/activity2.jpeg" class="img2">
@@ -900,7 +900,7 @@
                 $sql4 = "SELECT * FROM gallery WHERE status='1' ORDER BY id DESC LIMIT 3";
                 $result4 = $conn->query($sql4);
                 while ($row4 = $result4->fetch_assoc()) {
-                    ?>
+                ?>
                     <!-- image 1 -->
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#galleryModal" data-slide="0"
@@ -1005,14 +1005,15 @@
         });
     </script> -->
     <script>
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
 
-    // BOOKING
     let selected = {}
     let price = 0
 
+    // BOOK BUTTON
     document.querySelectorAll(".book-btn").forEach(btn => {
-        btn.onclick = function() {
+
+        btn.onclick = function () {
 
             selected = this.dataset
             price = Number(selected.price)
@@ -1022,12 +1023,14 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("modalDesc").innerText = selected.desc
             document.getElementById("modalPrice").innerText = "₹" + price + "/Night"
 
-            new bootstrap.Modal(document.getElementById('detailsModal')).show()
+            new bootstrap.Modal(
+                document.getElementById('detailsModal')
+            ).show()
         }
     })
 
     // NEXT MODAL
-    document.getElementById("goForm").onclick = function() {
+    document.getElementById("goForm").onclick = function () {
 
         bootstrap.Modal
             .getInstance(document.getElementById('detailsModal'))
@@ -1035,7 +1038,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         document.getElementById("pricePerNight").innerText = "₹" + price
         document.getElementById("totalPrice").innerText = "₹" + price
-        document.getElementById("daysInput").value = 1
+        document.getElementById("daysInput").value = "1 day"
 
         document.getElementById("checkIn").value = ""
         document.getElementById("checkOut").value = ""
@@ -1066,7 +1069,11 @@ document.addEventListener("DOMContentLoaded", function() {
             let diffTime = end - start
             let diffDays = diffTime / (1000 * 60 * 60 * 24)
 
-            if (diffDays <= 0) diffDays = 1
+            if (diffDays <= 0) {
+                alert("Check-out must be after Check-in")
+                checkOut.value = ""
+                return
+            }
 
             daysInput.value = diffDays + " days"
             updatePrice(diffDays)
@@ -1074,12 +1081,27 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function updatePrice(days) {
+
         let total = days * price
         document.getElementById("totalPrice").innerText = "₹" + total
     }
 
+    // NAME VALIDATION (LIVE)
+    document.getElementById("userName")
+        .addEventListener("input", function () {
+
+        this.value = this.value.replace(/[^A-Za-z\s]/g, '')
+    })
+
+    // PHONE VALIDATION (LIVE)
+    document.getElementById("userPhone")
+        .addEventListener("input", function () {
+
+        this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)
+    })
+
     // FINAL BOOK
-    document.getElementById("finalBook").onclick = function() {
+    document.getElementById("finalBook").onclick = function () {
 
         let name = document.getElementById("userName").value.trim()
         let phone = document.getElementById("userPhone").value.trim()
@@ -1094,27 +1116,32 @@ document.addEventListener("DOMContentLoaded", function() {
             .getElementById("modalTitle")
             .innerText
 
-        // VALIDATION
-
         let nameRegex = /^[A-Za-z\s]+$/
         let phoneRegex = /^[0-9]{10}$/
 
+        // EMPTY CHECK
         if (!name || !phone || !cin || !cout) {
-            alert("All fields required")
+            alert("Please fill all fields")
             return
         }
 
+        // NAME CHECK
         if (!nameRegex.test(name)) {
-            alert("Name only alphabet allowed")
+            alert("Name should contain only alphabets and spaces")
             return
         }
 
+        // PHONE CHECK
         if (!phoneRegex.test(phone)) {
-            alert("Phone must be 10 digit")
+            alert("Phone must be exactly 10 digits")
             return
         }
 
-        // SEND DATA TO PHP
+        // DATE CHECK
+        if (cin >= cout) {
+            alert("Check-out must be after Check-in")
+            return
+        }
 
         fetch("save-booking.php", {
 
@@ -1140,6 +1167,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (data.trim() === "success") {
 
+                alert("Booking Successful 🎉")
+
                 bootstrap.Modal
                     .getInstance(
                         document.getElementById('formModal')
@@ -1163,6 +1192,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         })
 
+        .catch(() => {
+
+            alert("Server Error")
+
+        })
     }
 
 });

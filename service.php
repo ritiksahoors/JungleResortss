@@ -136,7 +136,7 @@
                 $sql3 = "SELECT * FROM servicee WHERE status='1'";
                 $result3 = $conn->query($sql3);
                 while ($row3 = $result3->fetch_assoc()) {
-                    ?>
+                ?>
                     <div class="col-lg-4 col-md-4 col-sm-12">
 
                         <div class="jungle-card">
@@ -500,7 +500,7 @@
                             $sql5 = "SELECT * FROM activities WHERE status='1' LIMIT 4";
                             $result5 = $conn->query($sql5);
                             while ($row5 = $result5->fetch_assoc()) {
-                                ?>
+                            ?>
                                 <img src="admin/upload/activities/<?php echo $row5['image']; ?>"
                                     class="jc-slide jc-active-slide">
                                 <!-- <img src="assets/img/About_us2.webp" class="jc-slide">
@@ -650,7 +650,7 @@
                 $sql6 = "SELECT * FROM dining WHERE status='1'";
                 $result6 = $conn->query($sql6);
                 while ($row6 = $result6->fetch_assoc()) {
-                    ?>
+                ?>
                     <div class="col-md-4" data-aos="fade-up">
                         <div class="stay-img-box">
 
@@ -784,15 +784,16 @@
         });
     </script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
-    // BOOKING
     let selected = {}
     let price = 0
 
-            document.querySelectorAll(".book-btn").forEach(btn => {
-                btn.onclick = function () {
+    // BOOK BUTTON
+    document.querySelectorAll(".book-btn").forEach(btn => {
+
+        btn.onclick = function () {
 
             selected = this.dataset
             price = Number(selected.price)
@@ -806,8 +807,8 @@
         }
     })
 
-            // NEXT MODAL
-            document.getElementById("goForm").onclick = function () {
+    // NEXT MODAL
+    document.getElementById("goForm").onclick = function () {
 
         bootstrap.Modal
             .getInstance(document.getElementById('detailsModal'))
@@ -854,12 +855,22 @@
     }
 
     function updatePrice(days) {
+
         let total = days * price
         document.getElementById("totalPrice").innerText = "₹" + total
     }
 
+    // INPUT VALIDATION
+    document.getElementById("userName").addEventListener("input", function () {
+        this.value = this.value.replace(/[^A-Za-z\s]/g, '')
+    })
+
+    document.getElementById("userPhone").addEventListener("input", function () {
+        this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)
+    })
+
     // FINAL BOOK
-    document.getElementById("finalBook").onclick = function() {
+    document.getElementById("finalBook").onclick = function () {
 
         let name = document.getElementById("userName").value.trim()
         let phone = document.getElementById("userPhone").value.trim()
@@ -874,8 +885,6 @@
             .getElementById("modalTitle")
             .innerText
 
-        // VALIDATION
-
         let nameRegex = /^[A-Za-z\s]+$/
         let phoneRegex = /^[0-9]{10}$/
 
@@ -885,16 +894,14 @@
         }
 
         if (!nameRegex.test(name)) {
-            alert("Name only alphabet allowed")
+            alert("Name should contain only alphabets and spaces")
             return
         }
 
         if (!phoneRegex.test(phone)) {
-            alert("Phone must be 10 digit")
+            alert("Phone must be exactly 10 digits")
             return
         }
-
-        // SEND DATA TO PHP
 
         fetch("save-booking.php", {
 
@@ -920,6 +927,8 @@
 
             if (data.trim() === "success") {
 
+                alert("Booking Successful 🎉")
+
                 bootstrap.Modal
                     .getInstance(
                         document.getElementById('formModal')
@@ -943,51 +952,15 @@
 
         })
 
+        .catch(() => {
+
+            alert("Server Error")
+
+        })
     }
 
-            checkOut.addEventListener("change", calculateDays)
-
-            function calculateDays() {
-                if (checkIn.value && checkOut.value) {
-
-                    const start = new Date(checkIn.value)
-                    const end = new Date(checkOut.value)
-
-                    let diffTime = end - start
-                    let diffDays = diffTime / (1000 * 60 * 60 * 24)
-
-                    if (diffDays <= 0) diffDays = 1
-
-                    daysInput.value = diffDays + " days"
-                    updatePrice(diffDays)
-                }
-            }
-
-            function updatePrice(days) {
-                let total = days * price
-                document.getElementById("totalPrice").innerText = "₹" + total
-            }
-
-            // MANUAL CHANGE (fallback)
-            daysInput.addEventListener("input", function () {
-
-                let days = Number(this.value)
-
-                if (days < 1) days = 1
-
-                updatePrice(days)
-            })
-
-            // FINAL BOOK
-            document.getElementById("finalBook").onclick = function () {
-
-                bootstrap.Modal.getInstance(document.getElementById('formModal')).hide()
-
-                new bootstrap.Toast(document.getElementById('bookingToast')).show()
-            }
-
-        });
-    </script>
+})
+</script>
 
 </body>
 
