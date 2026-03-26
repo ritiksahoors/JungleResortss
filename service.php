@@ -434,42 +434,41 @@
 
                     <h4>📝 Enter Details</h4>
 
-                    <!-- NAME + PHONE -->
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control my-2" placeholder="Your Name">
+                            <input type="text" id="userName" class="form-control my-2" placeholder="Your Name">
                         </div>
+
                         <div class="col-md-6">
-                            <input type="tel" class="form-control my-2" placeholder="Phone Number">
+                            <input type="tel" id="userPhone" class="form-control my-2" placeholder="Phone Number">
                         </div>
                     </div>
 
-                    <!-- DATE RANGE -->
                     <div class="row">
                         <div class="col-md-6">
-                            <label class="mt-2">Check-in Date</label>
+                            <label>Check-in Date</label>
                             <input type="date" id="checkIn" class="form-control my-2">
                         </div>
+
                         <div class="col-md-6">
-                            <label class="mt-2">Check-out Date</label>
+                            <label>Check-out Date</label>
                             <input type="date" id="checkOut" class="form-control my-2">
                         </div>
                     </div>
 
-                    <!-- DAYS + PRICE -->
                     <div class="row align-items-center mt-2">
                         <div class="col-md-4">
-                            <input type="text" id="daysInput" class="form-control" value="1 days" readonly>
+                            <input type="text" id="daysInput" class="form-control" readonly>
                         </div>
+
                         <div class="col-md-8">
                             <div class="price-box">
-                                <p class="mb-1">Price/Night: <span id="pricePerNight">₹1000</span></p>
-                                <h6 class="mb-0">Total: <span id="totalPrice">₹1000</span></h6>
+                                <p>Price/Night: <span id="pricePerNight">₹1000</span></p>
+                                <h6>Total: <span id="totalPrice">₹1000</span></h6>
                             </div>
                         </div>
                     </div>
 
-                    <!-- BUTTON -->
                     <button class="btn btn-success w-100 mt-3" id="finalBook">
                         🚀 Confirm Booking
                     </button>
@@ -788,52 +787,163 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
 
-            // BOOKING
-            let selected = {}
-            let price = 0
+    // BOOKING
+    let selected = {}
+    let price = 0
 
             document.querySelectorAll(".book-btn").forEach(btn => {
                 btn.onclick = function () {
 
-                    selected = this.dataset
-                    price = Number(selected.price)
+            selected = this.dataset
+            price = Number(selected.price)
 
-                    document.getElementById("modalImg").src = selected.img
-                    document.getElementById("modalTitle").innerText = selected.title
-                    document.getElementById("modalDesc").innerText = selected.desc
-                    document.getElementById("modalPrice").innerText = "₹" + price + "/Night"
+            document.getElementById("modalImg").src = selected.img
+            document.getElementById("modalTitle").innerText = selected.title
+            document.getElementById("modalDesc").innerText = selected.desc
+            document.getElementById("modalPrice").innerText = "₹" + price + "/Night"
 
-                    new bootstrap.Modal(document.getElementById('detailsModal')).show()
-                }
-            })
+            new bootstrap.Modal(document.getElementById('detailsModal')).show()
+        }
+    })
 
             // NEXT MODAL
             document.getElementById("goForm").onclick = function () {
 
-                bootstrap.Modal.getInstance(document.getElementById('detailsModal')).hide()
+        bootstrap.Modal
+            .getInstance(document.getElementById('detailsModal'))
+            .hide()
 
-                // SET INITIAL PRICE
-                document.getElementById("pricePerNight").innerText = "₹" + price
-                document.getElementById("totalPrice").innerText = "₹" + price
+        document.getElementById("pricePerNight").innerText = "₹" + price
+        document.getElementById("totalPrice").innerText = "₹" + price
+        document.getElementById("daysInput").value = 1
 
-                document.getElementById("daysInput").value = 1
+        document.getElementById("checkIn").value = ""
+        document.getElementById("checkOut").value = ""
 
-                // RESET DATES
+        new bootstrap.Modal(
+            document.getElementById('formModal')
+        ).show()
+    }
+
+    const checkIn = document.getElementById("checkIn")
+    const checkOut = document.getElementById("checkOut")
+    const daysInput = document.getElementById("daysInput")
+
+    checkIn.addEventListener("change", () => {
+        checkOut.min = checkIn.value
+        calculateDays()
+    })
+
+    checkOut.addEventListener("change", calculateDays)
+
+    function calculateDays() {
+
+        if (checkIn.value && checkOut.value) {
+
+            const start = new Date(checkIn.value)
+            const end = new Date(checkOut.value)
+
+            let diffTime = end - start
+            let diffDays = diffTime / (1000 * 60 * 60 * 24)
+
+            if (diffDays <= 0) diffDays = 1
+
+            daysInput.value = diffDays + " days"
+            updatePrice(diffDays)
+        }
+    }
+
+    function updatePrice(days) {
+        let total = days * price
+        document.getElementById("totalPrice").innerText = "₹" + total
+    }
+
+    // FINAL BOOK
+    document.getElementById("finalBook").onclick = function() {
+
+        let name = document.getElementById("userName").value.trim()
+        let phone = document.getElementById("userPhone").value.trim()
+        let cin = checkIn.value
+        let cout = checkOut.value
+
+        let total = document
+            .getElementById("totalPrice")
+            .innerText.replace("₹", "")
+
+        let room = document
+            .getElementById("modalTitle")
+            .innerText
+
+        // VALIDATION
+
+        let nameRegex = /^[A-Za-z\s]+$/
+        let phoneRegex = /^[0-9]{10}$/
+
+        if (!name || !phone || !cin || !cout) {
+            alert("All fields required")
+            return
+        }
+
+        if (!nameRegex.test(name)) {
+            alert("Name only alphabet allowed")
+            return
+        }
+
+        if (!phoneRegex.test(phone)) {
+            alert("Phone must be 10 digit")
+            return
+        }
+
+        // SEND DATA TO PHP
+
+        fetch("save-booking.php", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+
+            body:
+                "name=" + name +
+                "&phone=" + phone +
+                "&room=" + room +
+                "&checkin=" + cin +
+                "&checkout=" + cout +
+                "&total=" + total
+
+        })
+
+        .then(res => res.text())
+
+        .then(data => {
+
+            if (data.trim() === "success") {
+
+                bootstrap.Modal
+                    .getInstance(
+                        document.getElementById('formModal')
+                    )
+                    .hide()
+
+                new bootstrap.Toast(
+                    document.getElementById('bookingToast')
+                ).show()
+
+                document.getElementById("userName").value = ""
+                document.getElementById("userPhone").value = ""
                 document.getElementById("checkIn").value = ""
                 document.getElementById("checkOut").value = ""
 
-                new bootstrap.Modal(document.getElementById('formModal')).show()
+            } else {
+
+                alert("Booking Failed")
+
             }
 
-            const checkIn = document.getElementById("checkIn")
-            const checkOut = document.getElementById("checkOut")
-            const daysInput = document.getElementById("daysInput")
+        })
 
-            // AUTO SET MIN CHECKOUT DATE
-            checkIn.addEventListener("change", () => {
-                checkOut.min = checkIn.value
-                calculateDays()
-            })
+    }
 
             checkOut.addEventListener("change", calculateDays)
 

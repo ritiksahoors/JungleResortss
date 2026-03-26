@@ -289,6 +289,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let selected = {}
     let price = 0
 
+    // TODAY DATE SET (CHECKIN BACK DATE BLOCK)
+    const today = new Date().toISOString().split("T")[0]
+    document.getElementById("checkIn").min = today
+
     // BOOK BUTTON
     document.querySelectorAll(".book-btn").forEach(btn => {
 
@@ -322,6 +326,9 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("checkIn").value = ""
         document.getElementById("checkOut").value = ""
 
+        document.getElementById("checkIn").min = today
+        document.getElementById("checkOut").min = today
+
         new bootstrap.Modal(
             document.getElementById('formModal')
         ).show()
@@ -331,11 +338,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const checkOut = document.getElementById("checkOut")
     const daysInput = document.getElementById("daysInput")
 
+    // CHECKIN CHANGE
     checkIn.addEventListener("change", () => {
+
         checkOut.min = checkIn.value
         calculateDays()
     })
 
+    // CHECKOUT CHANGE
     checkOut.addEventListener("change", calculateDays)
 
     function calculateDays() {

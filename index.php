@@ -219,27 +219,33 @@
     </section>
 
     <section class="jungle-accommodation py-5">
+
         <div class="container">
+
             <div class="text-center mb-5 jungle-head">
+
                 <span class="jungle-tag">Accommodation</span>
+
                 <h2 class="jungle-title">
                     Cozy Retreat – Treat your Soul at
                     <span>Jungle Camp Resort 🌿</span>
                 </h2>
+
                 <p class="jungle-sub">
                     Choose your jungle vibe — cottage, tent or villa 😎
                 </p>
+
             </div>
+
+
             <div class="row g-4">
                 <?php
                 include 'admin/conn.php';
-                $sql3 = "SELECT * FROM servicee WHERE status='1' ORDER BY id DESC";
+                $sql3 = "SELECT * FROM servicee WHERE status='1'";
                 $result3 = $conn->query($sql3);
                 while ($row3 = $result3->fetch_assoc()) {
-                    ?>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-
-                        <!-- CARD -->
+                ?>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
 
                         <div class="jungle-card">
 
@@ -249,46 +255,68 @@
                                     <img src="admin/upload/service/<?php echo $row3['room_img2']; ?>">
                                 </div>
                             </div>
-                            <div class="jungle-label"><?php echo $row3['room_nm']; ?></div>
+
+                            <div class="jungle-label">
+                                <?php echo $row3['room_nm']; ?>
+                            </div>
+
                             <div class="jungle-bottom">
+
                                 <span class="price">
-                                    ₹<?php echo $row3['pricee']; ?> / Night
+                                    ₹ <?php echo $row3['pricee']; ?> / Night
                                 </span>
-                                <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
-                                    data-img="assets/img/wooden-cottage1.webp"
-                                    data-desc="Luxury wooden stay with jungle vibes 🌿">
+
+                                <button
+                                    class="book-btn"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#detailsModal"
+
+                                    data-title="<?php echo $row3['room_nm']; ?>"
+                                    data-price="<?php echo $row3['pricee']; ?>"
+                                    data-img1="admin/upload/service/<?php echo $row3['room_img']; ?>"
+                                    data-img2="admin/upload/service/<?php echo $row3['room_img2']; ?>"
+                                    data-desc="<?php echo $row3['id']; ?>">
                                     Book Now
                                 </button>
+
                             </div>
 
                         </div>
 
                     </div>
-
-
                     <!-- CARD -->
-                    <!-- <div class="col-lg-4 col-md-6 col-sm-12">
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-12">
+
                     <div class="jungle-card">
+
                         <div class="jungle-slider">
+
                             <div class="jungle-track">
+
                                 <img src="assets/img/banjara-cottage1.webp">
+
                                 <img src="assets/img/banjara-cottage1.webp">
+
                             </div>
+
                         </div>
+
                         <div class="jungle-label">🏕 Banjara Tent</div>
+
                         <div class="jungle-bottom">
                             <span class="price">₹4,999 / Night</span>
-                            <button class="book-btn" data-title="🏕 Banjara Tent" data-price="4999"
-                                data-img="assets/img/banjara-cottage1.webp"
+                            <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
+                                data-img="assets/img/wooden-cottage1.webp"
                                 data-desc="Luxury wooden stay with jungle vibes 🌿">
                                 Book Now
                             </button>
                         </div>
-                    </div>
-                </div> -->
 
+                    </div>
+
+                </div> -->
                     <!-- CARD -->
-                    <!-- <div class="col-lg-4 col-md-6 col-sm-12">
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-12">
 
                     <div class="jungle-card">
 
@@ -308,8 +336,8 @@
 
                         <div class="jungle-bottom">
                             <span class="price">₹4,999 / Night</span>
-                            <button class="book-btn" data-title="🏊 Pool Villa" data-price="4999"
-                                data-img="assets/img/poool-villa1.webp"
+                            <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
+                                data-img="assets/img/wooden-cottage1.webp"
                                 data-desc="Luxury wooden stay with jungle vibes 🌿">
                                 Book Now
                             </button>
@@ -318,11 +346,8 @@
                     </div>
 
                 </div> -->
-
-
                     <!-- CARD -->
-
-                    <!-- <div class="col-lg-4 col-md-6 col-sm-12">
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-12 ">
 
                     <div class="jungle-card">
 
@@ -342,8 +367,8 @@
 
                         <div class="jungle-bottom">
                             <span class="price">₹4,999 / Night</span>
-                            <button class="book-btn" data-title="👑 Royal Swiss Tent" data-price="4999"
-                                data-img="assets/img/pool-swiss.webp"
+                            <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
+                                data-img="assets/img/wooden-cottage1.webp"
                                 data-desc="Luxury wooden stay with jungle vibes 🌿">
                                 Book Now
                             </button>
@@ -353,8 +378,7 @@
 
                 </div> -->
                     <!-- CARD -->
-
-                    <!-- <div class="col-lg-4 col-md-6 col-sm-12">
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-12 ">
 
                     <div class="jungle-card">
 
@@ -384,11 +408,8 @@
                     </div>
 
                 </div> -->
-
-
                     <!-- CARD -->
-
-                    <!-- <div class="col-lg-4 col-md-6 col-sm-12">
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-12 ">
 
                     <div class="jungle-card">
 
@@ -408,8 +429,8 @@
 
                         <div class="jungle-bottom">
                             <span class="price">₹4,999 / Night</span>
-                            <button class="book-btn" data-title="🏕 Banjara Tent" data-price="4999"
-                                data-img="assets/img/banjara-cottage1.webp"
+                            <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
+                                data-img="assets/img/wooden-cottage1.webp"
                                 data-desc="Luxury wooden stay with jungle vibes 🌿">
                                 Book Now
                             </button>
@@ -418,11 +439,8 @@
                     </div>
 
                 </div> -->
-
-
                     <!-- CARD -->
-
-                    <!-- <div class="col-lg-4 col-md-6 col-sm-12">
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-12 ">
 
                     <div class="jungle-card">
 
@@ -442,8 +460,8 @@
 
                         <div class="jungle-bottom">
                             <span class="price">₹4,999 / Night</span>
-                            <button class="book-btn" data-title="🏊 Pool Villa" data-price="4999"
-                                data-img="assets/img/poool-villa1.webp"
+                            <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
+                                data-img="assets/img/wooden-cottage1.webp"
                                 data-desc="Luxury wooden stay with jungle vibes 🌿">
                                 Book Now
                             </button>
@@ -452,12 +470,8 @@
                     </div>
 
                 </div> -->
-
-
                     <!-- CARD -->
-
-                    <!-- <div class="col-lg-4 col-md-6 col-sm-12">
-
+                    <!-- <div class="col-lg-4 col-md-4 col-sm-12 ">
                     <div class="jungle-card">
 
                         <div class="jungle-slider">
@@ -476,8 +490,8 @@
 
                         <div class="jungle-bottom">
                             <span class="price">₹4,999 / Night</span>
-                            <button class="book-btn" data-title="👑 Royal Swiss Tent" data-price="4999"
-                                data-img="assets/img/pool-swiss.webp"
+                            <button class="book-btn" data-title="Premium Wooden Cottage" data-price="4999"
+                                data-img="assets/img/wooden-cottage1.webp"
                                 data-desc="Luxury wooden stay with jungle vibes 🌿">
                                 Book Now
                             </button>
@@ -486,28 +500,34 @@
                     </div>
 
                 </div> -->
-
                 <?php } ?>
             </div>
-
-            <!-- <div class="text-center mt-5">
-                <button id="viewMoreBtn" class="btn gallery-btn">View More</button>
-            </div> -->
 
         </div>
 
         <!-- DETAILS MODAL -->
+        <!-- DETAILS MODAL -->
         <div class="modal fade" id="detailsModal">
             <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content fancy-modal">
+                <div class="modal-content jungle-fancy-modal p-4">
 
                     <button class="btn-close ms-auto" data-bs-dismiss="modal"></button>
 
-                    <img id="modalImg" class="img-fluid mod-img rounded mb-3">
+                    <!-- UNIQUE IMAGE SLIDER -->
+                    <div class="jungle-modal-gallery">
+                        <div class="jungle-modal-track" id="jungleModalTrack">
 
-                    <h3 id="modalTitle"></h3>
+                            <img id="jungleModalImg1">
+                            <img id="jungleModalImg2">
+
+                        </div>
+                    </div>
+
+                    <h3 id="modalTitle" class="mt-3"></h3>
+
                     <p id="modalDesc"></p>
-                    <h5 id="modalPrice"></h5>
+
+                    <h5 id="modalPrice" class="text-success"></h5>
 
                     <button class="btn btn-success w-100 mt-3" id="goForm">
                         😍 Continue Booking
@@ -527,42 +547,41 @@
 
                     <h4>📝 Enter Details</h4>
 
-                    <!-- NAME + PHONE -->
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control my-2" placeholder="Your Name">
+                            <input type="text" id="userName" class="form-control my-2" placeholder="Your Name">
                         </div>
+
                         <div class="col-md-6">
-                            <input type="tel" class="form-control my-2" placeholder="Phone Number">
+                            <input type="tel" id="userPhone" class="form-control my-2" placeholder="Phone Number">
                         </div>
                     </div>
 
-                    <!-- DATE RANGE -->
                     <div class="row">
                         <div class="col-md-6">
-                            <label class="mt-2">Check-in Date</label>
+                            <label>Check-in Date</label>
                             <input type="date" id="checkIn" class="form-control my-2">
                         </div>
+
                         <div class="col-md-6">
-                            <label class="mt-2">Check-out Date</label>
+                            <label>Check-out Date</label>
                             <input type="date" id="checkOut" class="form-control my-2">
                         </div>
                     </div>
 
-                    <!-- DAYS + PRICE -->
                     <div class="row align-items-center mt-2">
                         <div class="col-md-4">
-                            <input type="number" id="daysInput" class="form-control" min="1" value="1" readonly>
+                            <input type="text" id="daysInput" class="form-control" readonly>
                         </div>
+
                         <div class="col-md-8">
                             <div class="price-box">
-                                <p class="mb-1">Price/Night: <span id="pricePerNight">₹1000</span></p>
-                                <h6 class="mb-0">Total: <span id="totalPrice">₹1000</span></h6>
+                                <p>Price/Night: <span id="pricePerNight">₹1000</span></p>
+                                <h6>Total: <span id="totalPrice">₹1000</span></h6>
                             </div>
                         </div>
                     </div>
 
-                    <!-- BUTTON -->
                     <button class="btn btn-success w-100 mt-3" id="finalBook">
                         🚀 Confirm Booking
                     </button>
@@ -985,6 +1004,169 @@
             once: true
         });
     </script> -->
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    // BOOKING
+    let selected = {}
+    let price = 0
+
+    document.querySelectorAll(".book-btn").forEach(btn => {
+        btn.onclick = function() {
+
+            selected = this.dataset
+            price = Number(selected.price)
+
+            document.getElementById("modalImg").src = selected.img
+            document.getElementById("modalTitle").innerText = selected.title
+            document.getElementById("modalDesc").innerText = selected.desc
+            document.getElementById("modalPrice").innerText = "₹" + price + "/Night"
+
+            new bootstrap.Modal(document.getElementById('detailsModal')).show()
+        }
+    })
+
+    // NEXT MODAL
+    document.getElementById("goForm").onclick = function() {
+
+        bootstrap.Modal
+            .getInstance(document.getElementById('detailsModal'))
+            .hide()
+
+        document.getElementById("pricePerNight").innerText = "₹" + price
+        document.getElementById("totalPrice").innerText = "₹" + price
+        document.getElementById("daysInput").value = 1
+
+        document.getElementById("checkIn").value = ""
+        document.getElementById("checkOut").value = ""
+
+        new bootstrap.Modal(
+            document.getElementById('formModal')
+        ).show()
+    }
+
+    const checkIn = document.getElementById("checkIn")
+    const checkOut = document.getElementById("checkOut")
+    const daysInput = document.getElementById("daysInput")
+
+    checkIn.addEventListener("change", () => {
+        checkOut.min = checkIn.value
+        calculateDays()
+    })
+
+    checkOut.addEventListener("change", calculateDays)
+
+    function calculateDays() {
+
+        if (checkIn.value && checkOut.value) {
+
+            const start = new Date(checkIn.value)
+            const end = new Date(checkOut.value)
+
+            let diffTime = end - start
+            let diffDays = diffTime / (1000 * 60 * 60 * 24)
+
+            if (diffDays <= 0) diffDays = 1
+
+            daysInput.value = diffDays + " days"
+            updatePrice(diffDays)
+        }
+    }
+
+    function updatePrice(days) {
+        let total = days * price
+        document.getElementById("totalPrice").innerText = "₹" + total
+    }
+
+    // FINAL BOOK
+    document.getElementById("finalBook").onclick = function() {
+
+        let name = document.getElementById("userName").value.trim()
+        let phone = document.getElementById("userPhone").value.trim()
+        let cin = checkIn.value
+        let cout = checkOut.value
+
+        let total = document
+            .getElementById("totalPrice")
+            .innerText.replace("₹", "")
+
+        let room = document
+            .getElementById("modalTitle")
+            .innerText
+
+        // VALIDATION
+
+        let nameRegex = /^[A-Za-z\s]+$/
+        let phoneRegex = /^[0-9]{10}$/
+
+        if (!name || !phone || !cin || !cout) {
+            alert("All fields required")
+            return
+        }
+
+        if (!nameRegex.test(name)) {
+            alert("Name only alphabet allowed")
+            return
+        }
+
+        if (!phoneRegex.test(phone)) {
+            alert("Phone must be 10 digit")
+            return
+        }
+
+        // SEND DATA TO PHP
+
+        fetch("save-booking.php", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+
+            body:
+                "name=" + name +
+                "&phone=" + phone +
+                "&room=" + room +
+                "&checkin=" + cin +
+                "&checkout=" + cout +
+                "&total=" + total
+
+        })
+
+        .then(res => res.text())
+
+        .then(data => {
+
+            if (data.trim() === "success") {
+
+                bootstrap.Modal
+                    .getInstance(
+                        document.getElementById('formModal')
+                    )
+                    .hide()
+
+                new bootstrap.Toast(
+                    document.getElementById('bookingToast')
+                ).show()
+
+                document.getElementById("userName").value = ""
+                document.getElementById("userPhone").value = ""
+                document.getElementById("checkIn").value = ""
+                document.getElementById("checkOut").value = ""
+
+            } else {
+
+                alert("Booking Failed")
+
+            }
+
+        })
+
+    }
+
+});
+</script>
 </body>
 
 </html>
