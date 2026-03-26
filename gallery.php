@@ -117,101 +117,51 @@
             <!-- tabs -->
 
             <ul class="nav nav-pills justify-content-center mb-5 gallery-tabs">
-
                 <li class="nav-item">
                     <button class="nav-link active" data-category="all">All</button>
                 </li>
-
                 <li class="nav-item">
                     <button class="nav-link" data-category="adventure">Adventure</button>
                 </li>
-
                 <li class="nav-item">
                     <button class="nav-link" data-category="rooms">Rooms</button>
                 </li>
-
                 <li class="nav-item">
                     <button class="nav-link" data-category="food">Food</button>
                 </li>
-
                 <li class="nav-item">
                     <button class="nav-link" data-category="events">Events</button>
                 </li>
-
             </ul>
 
 
 
+            <?php
+            $categories = [
+                '1' => 'adventure',
+                '2' => 'rooms',
+                '3' => 'food',
+                '4' => 'events'
+            ];
+            ?>
+
             <div class="row g-4 gallery-row">
+                <?php
+                include 'admin/conn.php';
+                $sql = "SELECT * FROM gallery WHERE status='1'";
+                $result = $conn->query($sql);
 
-                <!-- Adventure -->
-                <div class="col-lg-4 col-md-6 gallery-col">
-                    <div class="gallery-item">
-                        <img src="assets/img/activity1.jpeg" data-category="adventure" data-title="Zip Line Adventure"
-                            class="img-fluid">
+                while ($row = $result->fetch_assoc()) {
+
+                    $cat = $categories[$row['category']] ?? 'all';
+                    ?>
+                    <div class="col-lg-4 col-md-6 gallery-col" data-category="<?php echo $cat; ?>">
+                        <div class="gallery-item">
+                            <img src="admin/upload/gallery/<?php echo $row['image']; ?>" data-category="<?php echo $cat; ?>"
+                                class="img-fluid">
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 gallery-col">
-                    <div class="gallery-item">
-                        <img src="assets/img/activity2.jpeg" data-category="adventure" data-title="Wall Climbing"
-                            class="img-fluid">
-                    </div>
-                </div>
-
-                <!-- Rooms -->
-                <div class="col-lg-4 col-md-6 gallery-col">
-                    <div class="gallery-item">
-                        <img src="assets/img/activity3.jpeg" data-category="rooms" data-title="Luxury Jungle Room"
-                            class="img-fluid">
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 gallery-col">
-                    <div class="gallery-item">
-                        <img src="assets/img/activity4.jpeg" data-category="rooms" data-title="Deluxe Cottage"
-                            class="img-fluid">
-                    </div>
-                </div>
-
-                <!-- Food -->
-                <div class="col-lg-4 col-md-6 gallery-col">
-                    <div class="gallery-item">
-                        <img src="assets/img/banjara-cottage1.webp" data-category="food" data-title="Food Outlet"
-                            class="img-fluid">
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 gallery-col">
-                    <div class="gallery-item">
-                        <img src="assets/img/JC_BANNER_1-copy-1.webp" data-category="food" data-title="Restaurant Area"
-                            class="img-fluid">
-                    </div>
-                </div>
-
-                <!-- Events -->
-                <div class="col-lg-4 col-md-6 gallery-col">
-                    <div class="gallery-item">
-                        <img src="assets/img/JC_BANNER_2.webp" data-category="events" data-title="Social Event"
-                            class="img-fluid">
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 gallery-col">
-                    <div class="gallery-item">
-                        <img src="assets/img/JC_BANNER_3-1.webp" data-category="events" data-title="Camp Event"
-                            class="img-fluid">
-                    </div>
-                </div>
-
-                <!-- About -->
-                <div class="col-lg-4 col-md-6 gallery-col">
-                    <div class="gallery-item">
-                        <img src="assets/img/About_us.webp" data-category="about" data-title="Jungle Camp View"
-                            class="img-fluid">
-                    </div>
-                </div>
-
+                <?php } ?>
             </div>
 
         </div>

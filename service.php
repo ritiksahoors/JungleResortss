@@ -136,7 +136,7 @@
                 $sql3 = "SELECT * FROM servicee WHERE status='1'";
                 $result3 = $conn->query($sql3);
                 while ($row3 = $result3->fetch_assoc()) {
-                ?>
+                    ?>
                     <div class="col-lg-4 col-md-4 col-sm-12">
 
                         <div class="jungle-card">
@@ -158,13 +158,8 @@
                                     ₹ <?php echo $row3['pricee']; ?> / Night
                                 </span>
 
-                                <button
-                                    class="book-btn"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#detailsModal"
-
-                                    data-title="<?php echo $row3['room_nm']; ?>"
-                                    data-price="<?php echo $row3['pricee']; ?>"
+                                <button class="book-btn" data-bs-toggle="modal" data-bs-target="#detailsModal"
+                                    data-title="<?php echo $row3['room_nm']; ?>" data-price="<?php echo $row3['pricee']; ?>"
                                     data-img1="admin/upload/service/<?php echo $row3['room_img']; ?>"
                                     data-img2="admin/upload/service/<?php echo $row3['room_img2']; ?>"
                                     data-desc="<?php echo $row3['id']; ?>">
@@ -417,7 +412,7 @@
 
                     <h3 id="modalTitle" class="mt-3"></h3>
 
-                    <p id="modalDesc"></p>
+                    <p id="modalDesc" style="display:none;"></p>
 
                     <h5 id="modalPrice" class="text-success"></h5>
 
@@ -506,7 +501,7 @@
                             $sql5 = "SELECT * FROM activities WHERE status='1' LIMIT 4";
                             $result5 = $conn->query($sql5);
                             while ($row5 = $result5->fetch_assoc()) {
-                            ?>
+                                ?>
                                 <img src="admin/upload/activities/<?php echo $row5['image']; ?>"
                                     class="jc-slide jc-active-slide">
                                 <!-- <img src="assets/img/About_us2.webp" class="jc-slide">
@@ -656,7 +651,7 @@
                 $sql6 = "SELECT * FROM dining WHERE status='1'";
                 $result6 = $conn->query($sql6);
                 while ($row6 = $result6->fetch_assoc()) {
-                ?>
+                    ?>
                     <div class="col-md-4" data-aos="fade-up">
                         <div class="stay-img-box">
 
@@ -791,14 +786,14 @@
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
 
             // BOOKING
             let selected = {}
             let price = 0
 
             document.querySelectorAll(".book-btn").forEach(btn => {
-                btn.onclick = function() {
+                btn.onclick = function () {
 
                     selected = this.dataset
                     price = Number(selected.price)
@@ -813,7 +808,7 @@
             })
 
             // NEXT MODAL
-            document.getElementById("goForm").onclick = function() {
+            document.getElementById("goForm").onclick = function () {
 
                 bootstrap.Modal.getInstance(document.getElementById('detailsModal')).hide()
 
@@ -864,7 +859,7 @@
             }
 
             // MANUAL CHANGE (fallback)
-            daysInput.addEventListener("input", function() {
+            daysInput.addEventListener("input", function () {
 
                 let days = Number(this.value)
 
@@ -874,7 +869,7 @@
             })
 
             // FINAL BOOK
-            document.getElementById("finalBook").onclick = function() {
+            document.getElementById("finalBook").onclick = function () {
 
                 bootstrap.Modal.getInstance(document.getElementById('formModal')).hide()
 

@@ -277,37 +277,33 @@
         <div class="container">
 
             <div class="row text-center">
+                <?php
+                include 'admin/conn.php';
 
-                <div class="col-md-3" data-aos="fade-up">
+                $sql = "SELECT * FROM about_counter WHERE status='1' ORDER BY name ASC";
+                $result = $conn->query($sql);
 
-                    <h2 class="counter" data-target="1500">0</h2>
-                    <p>Happy Visitors</p>
+                while ($row = $result->fetch_assoc()) {
 
-                </div>
-
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
-
-                    <h2 class="counter" data-target="120">0</h2>
-                    <p>Camping Events</p>
-
-                </div>
-
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
-
-                    <h2 class="counter" data-target="25">0</h2>
-                    <p>Tour Guides</p>
-
-                </div>
-
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
-
-                    <h2 class="counter" data-target="10">0</h2>
-                    <p>Years Experience</p>
-
-                </div>
-
+                    // Set label based on name
+                    if ($row['name'] == '1') {
+                        $label = "Happy Visitors";
+                    } elseif ($row['name'] == '2') {
+                        $label = "Camping Events";
+                    } elseif ($row['name'] == '3') {
+                        $label = "Tour Guides";
+                    } elseif ($row['name'] == '4') {
+                        $label = "Years Experience";
+                    } else {
+                        $label = "Unknown";
+                    }
+                    ?>
+                    <div class="col-md-3" data-aos="fade-up">
+                        <h2 class="counter" data-target="<?php echo $row['counter_value']; ?>">0</h2>
+                        <p><?php echo $label; ?></p>
+                    </div>
+                                <?php } ?>
             </div>
-
         </div>
 
     </section>

@@ -70,73 +70,60 @@
         <i class="bi bi-arrow-up"></i>
     </button>
     <section class="hero-slider mt-5">
-        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
-            <div class="carousel-inner">
-                <!-- Slide 1 -->
-                <div class="carousel-item active">
-                    <div class="hero-slide">
-                        <img src="assets/img/JC_BANNER_1-copy-1.webp" class="hero-img">
-                        <div class="hero-content container">
-                            <p class="mb-0"><i class="bi bi-geo-alt"></i> Puri Konark Marine Drive, Beldal, Odisha</p>
-                            <h1>Welcome to
-                                <span>Jungle Camp Resort,</span>
-                                Puri
-                            </h1>
-                            <h4>Celebrate in the Heart of Nature - Nature's Own Venue for Your Big Day</h4>
-                            <h5>Call or WhatsApp Us : +91- 7064478501</h5>
-                            <!-- <a href="#" class="btn hero-btn">Explore Now</a> -->
-                        </div>
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
 
-                    </div>
-                </div>
+        <div class="carousel-inner">
+            <?php
+                include 'admin/conn.php';
+                $sql10 = "SELECT * FROM banner WHERE status='1'";
+                $result10 = $conn->query($sql10);
 
-                <!-- Slide 2 -->
-                <div class="carousel-item">
-                    <div class="hero-slide">
-                        <img src="assets/img/JC_BANNER_2.webp" class="hero-img">
-                        <div class="hero-content container mt-5">
-                            <p class="mb-0"><i class="bi bi-geo-alt"></i> Puri Konark Marine Drive, Beldal, Odisha</p>
-                            <h1>Welcome to
-                                <span>Jungle Camp Resort,</span>
-                                Puri
-                            </h1>
-                            <h4>Celebrate in the Heart of Nature - Nature's Own Venue for Your Big Day</h4>
-                            <h5>Call or WhatsApp Us : +91- 7064478501</h5>
-                            <!-- <a href="#" class="btn hero-btn">Explore Now</a> -->
-                        </div>
+                $i = 0; // counter
+                
+                while ($row10 = $result10->fetch_assoc()) {
 
-                    </div>
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="carousel-item">
-                    <div class="hero-slide">
-                        <img src="assets/img/JC_BANNER_3-1.webp" class="hero-img">
-                        <div class="hero-content container mt-5">
-                            <p class="mb-0"><i class="bi bi-geo-alt"></i> Puri Konark Marine Drive, Beldal, Odisha</p>
-                            <h1>Welcome to
-                                <span>Jungle Camp Resort,</span>
-                                Puri
-                            </h1>
-                            <h4>Celebrate in the Heart of Nature - Nature's Own Venue for Your Big Day</h4>
-                            <h5>Call or WhatsApp Us : +91- 7064478501</h5>
-                            <!-- <a href="#" class="btn hero-btn">Explore Now</a> -->
+                    // Only first item active
+                    $active = ($i == 0) ? 'active' : '';
+                    ?>
+                    <div class="carousel-item <?php echo $active; ?>">
+                        <div class="hero-slide">
+                            <img src="admin/upload/banner/<?php echo $row10['img']; ?>" class="hero-img w-100">
+    
+                            <div class="hero-content container">
+                                <p class="mb-0">
+                                    <i class="bi bi-geo-alt"></i> Puri Konark Marine Drive, Beldal, Odisha
+                                </p>
+    
+                                <h1>
+                                    Welcome to
+                                    <span>Jungle Camp Resort,</span>
+                                    Puri
+                                </h1>
+    
+                                <h4><?php echo $row10['descc']; ?></h4>
+    
+                                <h5>Call or WhatsApp Us : +91-7064478501</h5>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <?php
+                    $i++;
+                }
+                ?>
             </div>
-
+    
+            <!-- Prev Button -->
             <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </button>
-
+    
+            <!-- Next Button -->
             <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </button>
-
+    
         </div>
     </section>
-
     <section class="about-section py-5">
         <div class="container">
             <div class="row align-items-center g-5">

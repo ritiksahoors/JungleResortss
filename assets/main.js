@@ -374,3 +374,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 })
+
+
+
+document.querySelectorAll(".gallery-tabs .nav-link").forEach(button => {
+    button.addEventListener("click", function () {
+
+        // Active button
+        document.querySelectorAll(".gallery-tabs .nav-link").forEach(btn => btn.classList.remove("active"));
+        this.classList.add("active");
+
+        let category = this.getAttribute("data-category");
+
+        document.querySelectorAll(".gallery-col").forEach(item => {
+            if (category === "all" || item.getAttribute("data-category") === category) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    });
+});
