@@ -2,186 +2,122 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Document</title>
-
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Bootstrap Icons CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
     <!-- AOS Animation CSS -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
     <!-- Style CSS -->
     <link href="assets/style.css" rel="stylesheet">
-
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
-
             <!-- Logo -->
             <a class="navbar-brand" href="index.php">
                 <img src="assets/img/main_logo.png" class="img-fluid" alt="">
             </a>
-
             <!-- Mobile Toggle -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
-
                 <span class="navbar-toggler-icon"></span>
-
             </button>
-
             <!-- Nav Links -->
             <div class="collapse navbar-collapse" id="mainNavbar">
-
                 <ul class="navbar-nav ms-auto">
-
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">Home</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link active" href="about.php">About</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="service.php">Services</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="gallery.php">Gallery</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="contact.php">Contact</a>
                     </li>
-
                 </ul>
-
             </div>
-
         </div>
     </nav>
 
     <!-- ================= MODERN LOADER ================= -->
-
     <div id="loader">
         <div class="loader-box">
-
             <span class="loader-ring"></span>
-
             <img src="assets/img/main_logo.png" class="loader-logo">
-
         </div>
     </div>
 
-
     <!-- ================= CLICK TO CALL ================= -->
-
     <a href="tel:+919876543210" id="callBtn">
         <i class="bi bi-telephone-fill"></i>
     </a>
 
-
     <!-- ================= GO TO TOP ================= -->
-
     <button id="goTop">
         <i class="bi bi-arrow-up"></i>
     </button>
-
     <section class="about-banner d-flex align-items-center">
-
         <div class="container text-center text-white">
-
             <h1 data-aos="fade-up">About JungleCamp</h1>
-
             <p data-aos="fade-up" data-aos-delay="200">
                 Experience nature, adventure, and unforgettable jungle memories.
             </p>
-
         </div>
-
     </section>
 
     <section class="about-story py-5 d-none d-lg-block d-md-block">
-
         <div class="container">
-
             <div class="row align-items-center g-5">
-
                 <div class="col-lg-6" data-aos="fade-right">
-
                     <img src="assets/img/About_us.webp" class="img-fluid about-img">
-
                 </div>
-
                 <div class="col-lg-6" data-aos="fade-left">
-
                     <h2>Our Story</h2>
-
                     <p>
                         JungleCamp was founded with the idea of bringing people closer to nature.
                         Located near the beautiful forests of Odisha, we provide unique jungle
                         camping experiences that combine adventure, relaxation, and wildlife exploration.
                     </p>
-
                     <p>
                         Our goal is to create unforgettable memories for every traveler while
                         protecting and respecting nature.
                     </p>
-
                     <a href="contact.php" class="btn hero-btn mt-3">Book Your Adventure</a>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
     <section class="about-story py-5 d-lg-none d-md-none d-sm-block">
-
         <div class="container">
-
             <div class="row align-items-center g-5">
-
-
                 <div class="col-lg-6" data-aos="fade-left">
-
                     <h2>Our Story</h2>
-
                     <p>
                         JungleCamp was founded with the idea of bringing people closer to nature.
                         Located near the beautiful forests of Odisha, we provide unique jungle
                         camping experiences that combine adventure, relaxation, and wildlife exploration.
                     </p>
-
                     <p>
                         Our goal is to create unforgettable memories for every traveler while
                         protecting and respecting nature.
                     </p>
-
                     <a href="contact.php" class="btn hero-btn mt-3">Book Your Adventure</a>
-
                 </div>
-
                 <div class="col-lg-6" data-aos="fade-right">
-
                     <img src="assets/img/About_us.webp" class="img-fluid about-img">
-
                 </div>
-
             </div>
-
         </div>
 
     </section>

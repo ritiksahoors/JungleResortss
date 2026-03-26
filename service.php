@@ -49,11 +49,11 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="about.php">About</a>
+                        <a class="nav-link" href="about.php">About</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="service.php">Services</a>
+                        <a class="nav-link active" href="service.php">Services</a>
                     </li>
 
                     <li class="nav-item">
