@@ -27,7 +27,7 @@
         <div class="container">
 
             <!-- Logo -->
-            <a class="navbar-brand" href="index.php">
+            <a class="navbar-brand" href="index">
                 <img src="assets/img/main_logo.png" class="img-fluid" alt="">
             </a>
 
@@ -44,23 +44,23 @@
                 <ul class="navbar-nav ms-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
+                        <a class="nav-link" href="index">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="about.php">About</a>
+                        <a class="nav-link" href="about">About</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="service.php">Services</a>
+                        <a class="nav-link" href="service">Services</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="gallery.php">Gallery</a>
+                        <a class="nav-link active" href="gallery">Gallery</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Contact</a>
+                        <a class="nav-link" href="contact">Contact</a>
                     </li>
 
                 </ul>
@@ -103,7 +103,7 @@
             <h1 data-aos="fade-up">Our Gallery</h1>
 
             <p data-aos="fade-up" data-aos-delay="200">
-                Explore beautiful moments from our jungle camp
+                Where every photo tells a jungle story.
             </p>
 
         </div>

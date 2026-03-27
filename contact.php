@@ -18,6 +18,7 @@
 
     <!-- Style CSS -->
     <link href="assets/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
 </head>
 
@@ -27,7 +28,7 @@
         <div class="container">
 
             <!-- Logo -->
-            <a class="navbar-brand" href="index.php">
+            <a class="navbar-brand" href="index">
                 <img src="assets/img/main_logo.png" class="img-fluid" alt="">
             </a>
 
@@ -44,23 +45,23 @@
                 <ul class="navbar-nav ms-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
+                        <a class="nav-link" href="index">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="about.php">About</a>
+                        <a class="nav-link" href="about">About</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="service.php">Services</a>
+                        <a class="nav-link" href="service">Services</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="gallery.php">Gallery</a>
+                        <a class="nav-link" href="gallery">Gallery</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="contact.php">Contact</a>
+                        <a class="nav-link active" href="contact">Contact</a>
                     </li>
 
                 </ul>
@@ -104,11 +105,13 @@
 
                 <div class="col-lg-6" data-aos="fade-right">
 
-                    <h1>Let's Plan Your <span>Jungle Adventure</span></h1>
+                    <h1>Your Adventure Starts Here 🌿
+                        <!-- <span>Jungle Adventure</span> -->
+                    </h1>
 
                     <p>
-                        Have questions about our camps, safari bookings, or packages?
-                        Our team is ready to help you plan the perfect experience.
+                        Dreaming of the jungle? Let us help you turn it into reality. Reach out for anything you
+                        need—we’re always happy to help.
                     </p>
 
                     <div class="hero-contact">
@@ -150,52 +153,53 @@
     </section>
 
     <section class="contact-main pt-5">
-
         <div class="container">
-
             <div class="row g-5">
-
                 <!-- FORM -->
-
                 <div class="col-lg-7">
-
                     <div class="contact-form-card">
-
                         <h3>Send Us A Message</h3>
-
-                        <form>
-
+                        <form id="contactForm">
                             <div class="row g-3">
 
                                 <div class="col-md-6">
-                                    <input type="text" placeholder="Your Name" class="form-control">
+                                    <input type="text" id="first-name" name="name" placeholder="Your Name"
+                                        class="form-control" required oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '');
+                this.value = this.value.split(' ').map(function(word) {
+                return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                }).join(' ');">
                                 </div>
 
                                 <div class="col-md-6">
-                                    <input type="email" placeholder="Your Email" class="form-control">
+                                    <input type="email" id="form-email" name="email" placeholder="Your Email"
+                                        class="form-control" required>
+                                    <div id="emailError" style="color:red; display:none;">
+                                        Please enter a valid email address.
+                                    </div>
                                 </div>
 
                                 <div class="col-12">
-                                    <input type="text" placeholder="Subject" class="form-control">
+                                    <input type="text" id="form-subject" name="subject" placeholder="Subject"
+                                        class="form-control" required>
                                 </div>
 
                                 <div class="col-12">
-                                    <textarea rows="5" placeholder="Write your message..."
-                                        class="form-control"></textarea>
+                                    <textarea rows="5" id="form-message" name="message"
+                                        placeholder="Write your message..." class="form-control" required></textarea>
                                 </div>
 
                                 <div class="col-12">
-                                    <button class="btn contact-btn">Send Message</button>
+                                    <button type="submit" class="btn contact-btn">Send Message</button>
+                                </div>
+
+                                <div id="Error" style="color:red; display:none;">
+                                    Please fill in all fields.
                                 </div>
 
                             </div>
-
                         </form>
-
                     </div>
-
                 </div>
-
 
                 <!-- CONTACT INFO -->
 
@@ -207,7 +211,7 @@
 
                         <div class="info-item">
                             <i class="bi bi-geo-alt"></i>
-                            <p>Puri Konark Marine Drive, <br>Beldal, Odisha</p>
+                            <p>Jungle Camp Resort, <br>Puri, Odisha</p>
                         </div>
 
                         <div class="info-item">
@@ -253,6 +257,8 @@
     <?php include 'common/footer.php'; ?>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <!-- AOS Animation JS -->
     <!-- <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script> -->
@@ -265,7 +271,65 @@
             once: true
         });
     </script> -->
+    <script>
+        $(document).ready(function () {
 
+            $('#contactForm').submit(function (e) {
+                e.preventDefault();
+
+                $('#Error').hide();
+                $('#emailError').hide();
+
+                let isValid = true;
+
+                // Check empty fields
+                $('#contactForm input, #contactForm textarea').each(function () {
+                    if ($(this).val().trim() === '') {
+                        isValid = false;
+                    }
+                });
+
+                // Email validation
+                let email = $('#form-email').val();
+                let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!emailPattern.test(email)) {
+                    $('#emailError').show();
+                    return;
+                }
+
+                if (!isValid) {
+                    $('#Error').show();
+                    return;
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'contactsubmit.php', // ✅ correct file
+                    data: $('#contactForm').serialize(),
+                    dataType: 'json',
+
+                    success: function (response) {
+                        console.log(response);
+
+                        if (response.status === 'success') {
+                            toastr.success(response.message);
+                            $('#contactForm')[0].reset();
+                        } else {
+                            toastr.error(response.message);
+                        }
+                    },
+
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                        toastr.error('Something went wrong!');
+                    }
+                });
+
+            });
+
+        });
+    </script>
 </body>
 
 </html>

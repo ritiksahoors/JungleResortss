@@ -63,6 +63,14 @@ $current_page = basename($_SERVER['PHP_SELF'], ".php");
                 </li>
 
                 <li class="nav-item">
+                    <a href="contact.php" class="nav-link <?php if ($current_page == 'contact')
+                        echo 'active'; ?>">
+                        <i class="fa fa-address-book nav-icon"></i>
+                        <p>Contact Form</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="activities.php" class="nav-link <?php if ($current_page == 'activities')
                         echo 'active'; ?>">
                         <i class="fa fa-wrench nav-icon"></i>
@@ -75,6 +83,14 @@ $current_page = basename($_SERVER['PHP_SELF'], ".php");
                         echo 'active'; ?>">
                         <i class="fa fa-info-circle nav-icon"></i>
                         <p>Aboutus Counter</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="booking.php" class="nav-link <?php if ($current_page == 'booking')
+                        echo 'active'; ?>">
+                        <i class="fa fa-bed nav-icon"></i>
+                        <p>Room Booking</p>
                     </a>
                 </li>
 

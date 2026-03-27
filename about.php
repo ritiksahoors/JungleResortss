@@ -20,7 +20,7 @@
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand" href="index.php">
+            <a class="navbar-brand" href="index">
                 <img src="assets/img/main_logo.png" class="img-fluid" alt="">
             </a>
             <!-- Mobile Toggle -->
@@ -31,19 +31,19 @@
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
+                        <a class="nav-link" href="index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="about.php">About</a>
+                        <a class="nav-link active" href="about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="service.php">Services</a>
+                        <a class="nav-link" href="service">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gallery.php">Gallery</a>
+                        <a class="nav-link" href="gallery">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Contact</a>
+                        <a class="nav-link" href="contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -93,7 +93,7 @@
                         Our goal is to create unforgettable memories for every traveler while
                         protecting and respecting nature.
                     </p>
-                    <a href="contact.php" class="btn hero-btn mt-3">Book Your Adventure</a>
+                    <a href="contact" class="btn hero-btn mt-3">Book Your Adventure</a>
                 </div>
             </div>
         </div>
@@ -113,7 +113,7 @@
                         Our goal is to create unforgettable memories for every traveler while
                         protecting and respecting nature.
                     </p>
-                    <a href="contact.php" class="btn hero-btn mt-3">Book Your Adventure</a>
+                    <a href="contact" class="btn hero-btn mt-3">Book Your Adventure</a>
                 </div>
                 <div class="col-lg-6" data-aos="fade-right">
                     <img src="assets/img/About_us.webp" class="img-fluid about-img">
@@ -302,7 +302,7 @@
                         <h2 class="counter" data-target="<?php echo $row['counter_value']; ?>">0</h2>
                         <p><?php echo $label; ?></p>
                     </div>
-                                <?php } ?>
+                <?php } ?>
             </div>
         </div>
 

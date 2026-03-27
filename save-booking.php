@@ -1,15 +1,6 @@
 <?php
 
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "jungle";
-
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    die("Connection Failed");
-}
+include 'admin/conn.php';
 
 $name = $_POST['name'];
 $phone = $_POST['phone'];

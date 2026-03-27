@@ -27,7 +27,7 @@
         <div class="container">
 
             <!-- Logo -->
-            <a class="navbar-brand" href="index.php">
+            <a class="navbar-brand" href="index">
                 <img src="assets/img/main_logo.png" class="img-fluid" alt="">
             </a>
 
@@ -44,23 +44,23 @@
                 <ul class="navbar-nav ms-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
+                        <a class="nav-link" href="index">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="about.php">About</a>
+                        <a class="nav-link" href="about">About</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="service.php">Services</a>
+                        <a class="nav-link active" href="service">Services</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="gallery.php">Gallery</a>
+                        <a class="nav-link" href="gallery">Gallery</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Contact</a>
+                        <a class="nav-link" href="contact">Contact</a>
                     </li>
 
                 </ul>
@@ -136,7 +136,7 @@
                 $sql3 = "SELECT * FROM servicee WHERE status='1'";
                 $result3 = $conn->query($sql3);
                 while ($row3 = $result3->fetch_assoc()) {
-                ?>
+                    ?>
                     <div class="col-lg-4 col-md-4 col-sm-12">
 
                         <div class="jungle-card">
@@ -500,7 +500,7 @@
                             $sql5 = "SELECT * FROM activities WHERE status='1' LIMIT 4";
                             $result5 = $conn->query($sql5);
                             while ($row5 = $result5->fetch_assoc()) {
-                            ?>
+                                ?>
                                 <img src="admin/upload/activities/<?php echo $row5['image']; ?>"
                                     class="jc-slide jc-active-slide">
                                 <!-- <img src="assets/img/About_us2.webp" class="jc-slide">
@@ -525,14 +525,16 @@
                     </h2>
 
                     <p class="jc-eco-text">
-                        Escape the chaos and immerse yourself in Jungle Camp’s pollution-free paradise!
-                        Kickstart your day with a forest bath, boost immunity, and sip coffee amidst lush foliage.
-                        Dive into thrilling activities like Zorbing, Wall Climbing, and Paddle Boating.
+                        Escape the city and unwind at Jungle Camp Resort, a perfect eco-friendly destination surrounded
+                        by nature. Enjoy peaceful forest walks, fresh air, and exciting activities like zorbing, wall
+                        climbing, paddle boating, shooting, and cycling. Ideal for weekend getaways, family trips, and
+                        nature lovers seeking adventure and relaxation.
                     </p>
 
                     <p class="jc-eco-text2">
-                        Jungle Camp Resort activities include Zorbing, Wall Climbing, Paddle Boating,
-                        Shooting, and Cycling with eco-friendly initiatives and team-building exercises.
+                        Reconnect with nature, rejuvenate your mind, and create unforgettable memories in a serene and
+                        green environment. Experience the perfect balance of comfort, adventure, and sustainable living
+                        all in one place.
                     </p>
 
                     <button class="jc-eco-btn">
@@ -642,7 +644,7 @@
         <div class="container">
             <div class="text-center mb-5">
                 <h2>Dining</h2>
-                <p>Comfortable accommodation with delicious food</p>
+                <p>Good food, cozy comfort, and a peaceful jungle vibe—just what you need to unwind.</p>
             </div>
             <div class="row g-4">
                 <?php
@@ -650,7 +652,7 @@
                 $sql6 = "SELECT * FROM dining WHERE status='1'";
                 $result6 = $conn->query($sql6);
                 while ($row6 = $result6->fetch_assoc()) {
-                ?>
+                    ?>
                     <div class="col-md-4" data-aos="fade-up">
                         <div class="stay-img-box">
 
@@ -784,183 +786,183 @@
         });
     </script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
-    let selected = {}
-    let price = 0
+            let selected = {}
+            let price = 0
 
-    // BOOK BUTTON
-    document.querySelectorAll(".book-btn").forEach(btn => {
+            // BOOK BUTTON
+            document.querySelectorAll(".book-btn").forEach(btn => {
 
-        btn.onclick = function () {
+                btn.onclick = function () {
 
-            selected = this.dataset
-            price = Number(selected.price)
+                    selected = this.dataset
+                    price = Number(selected.price)
 
-            document.getElementById("modalImg").src = selected.img
-            document.getElementById("modalTitle").innerText = selected.title
-            document.getElementById("modalDesc").innerText = selected.desc
-            document.getElementById("modalPrice").innerText = "₹" + price + "/Night"
+                    document.getElementById("modalImg").src = selected.img
+                    document.getElementById("modalTitle").innerText = selected.title
+                    document.getElementById("modalDesc").innerText = selected.desc
+                    document.getElementById("modalPrice").innerText = "₹" + price + "/Night"
 
-            new bootstrap.Modal(document.getElementById('detailsModal')).show()
-        }
-    })
+                    new bootstrap.Modal(document.getElementById('detailsModal')).show()
+                }
+            })
 
-    // NEXT MODAL
-    document.getElementById("goForm").onclick = function () {
-
-        bootstrap.Modal
-            .getInstance(document.getElementById('detailsModal'))
-            .hide()
-
-        document.getElementById("pricePerNight").innerText = "₹" + price
-        document.getElementById("totalPrice").innerText = "₹" + price
-        document.getElementById("daysInput").value = 1
-
-        document.getElementById("checkIn").value = ""
-        document.getElementById("checkOut").value = ""
-
-        new bootstrap.Modal(
-            document.getElementById('formModal')
-        ).show()
-    }
-
-    const checkIn = document.getElementById("checkIn")
-    const checkOut = document.getElementById("checkOut")
-    const daysInput = document.getElementById("daysInput")
-
-    checkIn.addEventListener("change", () => {
-        checkOut.min = checkIn.value
-        calculateDays()
-    })
-
-    checkOut.addEventListener("change", calculateDays)
-
-    function calculateDays() {
-
-        if (checkIn.value && checkOut.value) {
-
-            const start = new Date(checkIn.value)
-            const end = new Date(checkOut.value)
-
-            let diffTime = end - start
-            let diffDays = diffTime / (1000 * 60 * 60 * 24)
-
-            if (diffDays <= 0) diffDays = 1
-
-            daysInput.value = diffDays + " days"
-            updatePrice(diffDays)
-        }
-    }
-
-    function updatePrice(days) {
-
-        let total = days * price
-        document.getElementById("totalPrice").innerText = "₹" + total
-    }
-
-    // INPUT VALIDATION
-    document.getElementById("userName").addEventListener("input", function () {
-        this.value = this.value.replace(/[^A-Za-z\s]/g, '')
-    })
-
-    document.getElementById("userPhone").addEventListener("input", function () {
-        this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)
-    })
-
-    // FINAL BOOK
-    document.getElementById("finalBook").onclick = function () {
-
-        let name = document.getElementById("userName").value.trim()
-        let phone = document.getElementById("userPhone").value.trim()
-        let cin = checkIn.value
-        let cout = checkOut.value
-
-        let total = document
-            .getElementById("totalPrice")
-            .innerText.replace("₹", "")
-
-        let room = document
-            .getElementById("modalTitle")
-            .innerText
-
-        let nameRegex = /^[A-Za-z\s]+$/
-        let phoneRegex = /^[0-9]{10}$/
-
-        if (!name || !phone || !cin || !cout) {
-            alert("All fields required")
-            return
-        }
-
-        if (!nameRegex.test(name)) {
-            alert("Name should contain only alphabets and spaces")
-            return
-        }
-
-        if (!phoneRegex.test(phone)) {
-            alert("Phone must be exactly 10 digits")
-            return
-        }
-
-        fetch("save-booking.php", {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-
-            body:
-                "name=" + name +
-                "&phone=" + phone +
-                "&room=" + room +
-                "&checkin=" + cin +
-                "&checkout=" + cout +
-                "&total=" + total
-
-        })
-
-        .then(res => res.text())
-
-        .then(data => {
-
-            if (data.trim() === "success") {
-
-                alert("Booking Successful 🎉")
+            // NEXT MODAL
+            document.getElementById("goForm").onclick = function () {
 
                 bootstrap.Modal
-                    .getInstance(
-                        document.getElementById('formModal')
-                    )
+                    .getInstance(document.getElementById('detailsModal'))
                     .hide()
 
-                new bootstrap.Toast(
-                    document.getElementById('bookingToast')
-                ).show()
+                document.getElementById("pricePerNight").innerText = "₹" + price
+                document.getElementById("totalPrice").innerText = "₹" + price
+                document.getElementById("daysInput").value = 1
 
-                document.getElementById("userName").value = ""
-                document.getElementById("userPhone").value = ""
                 document.getElementById("checkIn").value = ""
                 document.getElementById("checkOut").value = ""
 
-            } else {
+                new bootstrap.Modal(
+                    document.getElementById('formModal')
+                ).show()
+            }
 
-                alert("Booking Failed")
+            const checkIn = document.getElementById("checkIn")
+            const checkOut = document.getElementById("checkOut")
+            const daysInput = document.getElementById("daysInput")
 
+            checkIn.addEventListener("change", () => {
+                checkOut.min = checkIn.value
+                calculateDays()
+            })
+
+            checkOut.addEventListener("change", calculateDays)
+
+            function calculateDays() {
+
+                if (checkIn.value && checkOut.value) {
+
+                    const start = new Date(checkIn.value)
+                    const end = new Date(checkOut.value)
+
+                    let diffTime = end - start
+                    let diffDays = diffTime / (1000 * 60 * 60 * 24)
+
+                    if (diffDays <= 0) diffDays = 1
+
+                    daysInput.value = diffDays + " days"
+                    updatePrice(diffDays)
+                }
+            }
+
+            function updatePrice(days) {
+
+                let total = days * price
+                document.getElementById("totalPrice").innerText = "₹" + total
+            }
+
+            // INPUT VALIDATION
+            document.getElementById("userName").addEventListener("input", function () {
+                this.value = this.value.replace(/[^A-Za-z\s]/g, '')
+            })
+
+            document.getElementById("userPhone").addEventListener("input", function () {
+                this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)
+            })
+
+            // FINAL BOOK
+            document.getElementById("finalBook").onclick = function () {
+
+                let name = document.getElementById("userName").value.trim()
+                let phone = document.getElementById("userPhone").value.trim()
+                let cin = checkIn.value
+                let cout = checkOut.value
+
+                let total = document
+                    .getElementById("totalPrice")
+                    .innerText.replace("₹", "")
+
+                let room = document
+                    .getElementById("modalTitle")
+                    .innerText
+
+                let nameRegex = /^[A-Za-z\s]+$/
+                let phoneRegex = /^[0-9]{10}$/
+
+                if (!name || !phone || !cin || !cout) {
+                    alert("All fields required")
+                    return
+                }
+
+                if (!nameRegex.test(name)) {
+                    alert("Name should contain only alphabets and spaces")
+                    return
+                }
+
+                if (!phoneRegex.test(phone)) {
+                    alert("Phone must be exactly 10 digits")
+                    return
+                }
+
+                fetch("save-booking.php", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+
+                    body:
+                        "name=" + name +
+                        "&phone=" + phone +
+                        "&room=" + room +
+                        "&checkin=" + cin +
+                        "&checkout=" + cout +
+                        "&total=" + total
+
+                })
+
+                    .then(res => res.text())
+
+                    .then(data => {
+
+                        if (data.trim() === "success") {
+
+                            // alert("Booking Successful 🎉")
+
+                            bootstrap.Modal
+                                .getInstance(
+                                    document.getElementById('formModal')
+                                )
+                                .hide()
+
+                            new bootstrap.Toast(
+                                document.getElementById('bookingToast')
+                            ).show()
+
+                            document.getElementById("userName").value = ""
+                            document.getElementById("userPhone").value = ""
+                            document.getElementById("checkIn").value = ""
+                            document.getElementById("checkOut").value = ""
+
+                        } else {
+
+                            alert("Booking Failed")
+
+                        }
+
+                    })
+
+                    .catch(() => {
+
+                        alert("Server Error")
+
+                    })
             }
 
         })
-
-        .catch(() => {
-
-            alert("Server Error")
-
-        })
-    }
-
-})
-</script>
+    </script>
 
 </body>
 

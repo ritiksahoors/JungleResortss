@@ -22,7 +22,7 @@
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand" href="index.php">
+            <a class="navbar-brand" href="index">
                 <img src="assets/img/main_logo.png" class="img-fluid" alt="">
             </a>
             <!-- Mobile Toggle -->
@@ -33,19 +33,19 @@
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php">Home</a>
+                        <a class="nav-link active" href="index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.php">About</a>
+                        <a class="nav-link" href="about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="service.php">Services</a>
+                        <a class="nav-link" href="service">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="gallery.php">Gallery</a>
+                        <a class="nav-link" href="gallery">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.php">Contact</a>
+                        <a class="nav-link" href="contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -79,12 +79,12 @@
                 $result10 = $conn->query($sql10);
 
                 $i = 0; // counter
-
+                
                 while ($row10 = $result10->fetch_assoc()) {
 
                     // Only first item active
                     $active = ($i == 0) ? 'active' : '';
-                ?>
+                    ?>
                     <div class="carousel-item <?php echo $active; ?>">
                         <div class="hero-slide">
                             <img src="admin/upload/banner/<?php echo $row10['img']; ?>" class="hero-img w-100">
@@ -106,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-                <?php
+                    <?php
                     $i++;
                 }
                 ?>
@@ -143,7 +143,7 @@
                         Our goal is to create unforgettable outdoor experiences where
                         you reconnect with nature and enjoy the beauty of the jungle.
                     </p>
-                    <a href="about.php" class="btn about-btn">
+                    <a href="about" class="btn about-btn">
                         Discover More
                     </a>
                 </div>
@@ -244,7 +244,7 @@
                 $sql3 = "SELECT * FROM servicee WHERE status='1'";
                 $result3 = $conn->query($sql3);
                 while ($row3 = $result3->fetch_assoc()) {
-                ?>
+                    ?>
                     <div class="col-lg-4 col-md-4 col-sm-12">
 
                         <div class="jungle-card">
@@ -266,13 +266,8 @@
                                     ₹ <?php echo $row3['pricee']; ?> / Night
                                 </span>
 
-                                <button
-                                    class="book-btn"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#detailsModal"
-
-                                    data-title="<?php echo $row3['room_nm']; ?>"
-                                    data-price="<?php echo $row3['pricee']; ?>"
+                                <button class="book-btn" data-bs-toggle="modal" data-bs-target="#detailsModal"
+                                    data-title="<?php echo $row3['room_nm']; ?>" data-price="<?php echo $row3['pricee']; ?>"
                                     data-img1="admin/upload/service/<?php echo $row3['room_img']; ?>"
                                     data-img2="admin/upload/service/<?php echo $row3['room_img2']; ?>"
                                     data-desc="<?php echo $row3['id']; ?>">
@@ -634,7 +629,7 @@
                         $sql2 = "SELECT * FROM adven WHERE status='1'";
                         $result2 = $conn->query($sql2);
                         while ($row2 = $result2->fetch_assoc()) {
-                        ?>
+                            ?>
                             <img src="admin/upload/adventure/<?php echo $row2['image']; ?>" class="img1">
 
                             <!-- <img src="assets/img/activity2.jpeg" class="img2">
@@ -900,7 +895,7 @@
                 $sql4 = "SELECT * FROM gallery WHERE status='1' ORDER BY id DESC LIMIT 3";
                 $result4 = $conn->query($sql4);
                 while ($row4 = $result4->fetch_assoc()) {
-                ?>
+                    ?>
                     <!-- image 1 -->
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-card" data-bs-toggle="modal" data-bs-target="#galleryModal" data-slide="0"
@@ -1005,202 +1000,202 @@
         });
     </script> -->
     <script>
-document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function () {
 
-    let selected = {}
-    let price = 0
+            let selected = {}
+            let price = 0
 
-    // BOOK BUTTON
-    document.querySelectorAll(".book-btn").forEach(btn => {
+            // BOOK BUTTON
+            document.querySelectorAll(".book-btn").forEach(btn => {
 
-        btn.onclick = function () {
+                btn.onclick = function () {
 
-            selected = this.dataset
-            price = Number(selected.price)
+                    selected = this.dataset
+                    price = Number(selected.price)
 
-            document.getElementById("modalImg").src = selected.img
-            document.getElementById("modalTitle").innerText = selected.title
-            document.getElementById("modalDesc").innerText = selected.desc
-            document.getElementById("modalPrice").innerText = "₹" + price + "/Night"
+                    document.getElementById("modalImg").src = selected.img
+                    document.getElementById("modalTitle").innerText = selected.title
+                    document.getElementById("modalDesc").innerText = selected.desc
+                    document.getElementById("modalPrice").innerText = "₹" + price + "/Night"
 
-            new bootstrap.Modal(
-                document.getElementById('detailsModal')
-            ).show()
-        }
-    })
+                    new bootstrap.Modal(
+                        document.getElementById('detailsModal')
+                    ).show()
+                }
+            })
 
-    // NEXT MODAL
-    document.getElementById("goForm").onclick = function () {
-
-        bootstrap.Modal
-            .getInstance(document.getElementById('detailsModal'))
-            .hide()
-
-        document.getElementById("pricePerNight").innerText = "₹" + price
-        document.getElementById("totalPrice").innerText = "₹" + price
-        document.getElementById("daysInput").value = "1 day"
-
-        document.getElementById("checkIn").value = ""
-        document.getElementById("checkOut").value = ""
-
-        new bootstrap.Modal(
-            document.getElementById('formModal')
-        ).show()
-    }
-
-    const checkIn = document.getElementById("checkIn")
-    const checkOut = document.getElementById("checkOut")
-    const daysInput = document.getElementById("daysInput")
-
-    checkIn.addEventListener("change", () => {
-        checkOut.min = checkIn.value
-        calculateDays()
-    })
-
-    checkOut.addEventListener("change", calculateDays)
-
-    function calculateDays() {
-
-        if (checkIn.value && checkOut.value) {
-
-            const start = new Date(checkIn.value)
-            const end = new Date(checkOut.value)
-
-            let diffTime = end - start
-            let diffDays = diffTime / (1000 * 60 * 60 * 24)
-
-            if (diffDays <= 0) {
-                alert("Check-out must be after Check-in")
-                checkOut.value = ""
-                return
-            }
-
-            daysInput.value = diffDays + " days"
-            updatePrice(diffDays)
-        }
-    }
-
-    function updatePrice(days) {
-
-        let total = days * price
-        document.getElementById("totalPrice").innerText = "₹" + total
-    }
-
-    // NAME VALIDATION (LIVE)
-    document.getElementById("userName")
-        .addEventListener("input", function () {
-
-        this.value = this.value.replace(/[^A-Za-z\s]/g, '')
-    })
-
-    // PHONE VALIDATION (LIVE)
-    document.getElementById("userPhone")
-        .addEventListener("input", function () {
-
-        this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)
-    })
-
-    // FINAL BOOK
-    document.getElementById("finalBook").onclick = function () {
-
-        let name = document.getElementById("userName").value.trim()
-        let phone = document.getElementById("userPhone").value.trim()
-        let cin = checkIn.value
-        let cout = checkOut.value
-
-        let total = document
-            .getElementById("totalPrice")
-            .innerText.replace("₹", "")
-
-        let room = document
-            .getElementById("modalTitle")
-            .innerText
-
-        let nameRegex = /^[A-Za-z\s]+$/
-        let phoneRegex = /^[0-9]{10}$/
-
-        // EMPTY CHECK
-        if (!name || !phone || !cin || !cout) {
-            alert("Please fill all fields")
-            return
-        }
-
-        // NAME CHECK
-        if (!nameRegex.test(name)) {
-            alert("Name should contain only alphabets and spaces")
-            return
-        }
-
-        // PHONE CHECK
-        if (!phoneRegex.test(phone)) {
-            alert("Phone must be exactly 10 digits")
-            return
-        }
-
-        // DATE CHECK
-        if (cin >= cout) {
-            alert("Check-out must be after Check-in")
-            return
-        }
-
-        fetch("save-booking.php", {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-
-            body:
-                "name=" + name +
-                "&phone=" + phone +
-                "&room=" + room +
-                "&checkin=" + cin +
-                "&checkout=" + cout +
-                "&total=" + total
-
-        })
-
-        .then(res => res.text())
-
-        .then(data => {
-
-            if (data.trim() === "success") {
-
-                alert("Booking Successful 🎉")
+            // NEXT MODAL
+            document.getElementById("goForm").onclick = function () {
 
                 bootstrap.Modal
-                    .getInstance(
-                        document.getElementById('formModal')
-                    )
+                    .getInstance(document.getElementById('detailsModal'))
                     .hide()
 
-                new bootstrap.Toast(
-                    document.getElementById('bookingToast')
-                ).show()
+                document.getElementById("pricePerNight").innerText = "₹" + price
+                document.getElementById("totalPrice").innerText = "₹" + price
+                document.getElementById("daysInput").value = "1 day"
 
-                document.getElementById("userName").value = ""
-                document.getElementById("userPhone").value = ""
                 document.getElementById("checkIn").value = ""
                 document.getElementById("checkOut").value = ""
 
-            } else {
-
-                alert("Booking Failed")
-
+                new bootstrap.Modal(
+                    document.getElementById('formModal')
+                ).show()
             }
 
-        })
+            const checkIn = document.getElementById("checkIn")
+            const checkOut = document.getElementById("checkOut")
+            const daysInput = document.getElementById("daysInput")
 
-        .catch(() => {
+            checkIn.addEventListener("change", () => {
+                checkOut.min = checkIn.value
+                calculateDays()
+            })
 
-            alert("Server Error")
+            checkOut.addEventListener("change", calculateDays)
 
-        })
-    }
+            function calculateDays() {
 
-});
-</script>
+                if (checkIn.value && checkOut.value) {
+
+                    const start = new Date(checkIn.value)
+                    const end = new Date(checkOut.value)
+
+                    let diffTime = end - start
+                    let diffDays = diffTime / (1000 * 60 * 60 * 24)
+
+                    if (diffDays <= 0) {
+                        alert("Check-out must be after Check-in")
+                        checkOut.value = ""
+                        return
+                    }
+
+                    daysInput.value = diffDays + " days"
+                    updatePrice(diffDays)
+                }
+            }
+
+            function updatePrice(days) {
+
+                let total = days * price
+                document.getElementById("totalPrice").innerText = "₹" + total
+            }
+
+            // NAME VALIDATION (LIVE)
+            document.getElementById("userName")
+                .addEventListener("input", function () {
+
+                    this.value = this.value.replace(/[^A-Za-z\s]/g, '')
+                })
+
+            // PHONE VALIDATION (LIVE)
+            document.getElementById("userPhone")
+                .addEventListener("input", function () {
+
+                    this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)
+                })
+
+            // FINAL BOOK
+            document.getElementById("finalBook").onclick = function () {
+
+                let name = document.getElementById("userName").value.trim()
+                let phone = document.getElementById("userPhone").value.trim()
+                let cin = checkIn.value
+                let cout = checkOut.value
+
+                let total = document
+                    .getElementById("totalPrice")
+                    .innerText.replace("₹", "")
+
+                let room = document
+                    .getElementById("modalTitle")
+                    .innerText
+
+                let nameRegex = /^[A-Za-z\s]+$/
+                let phoneRegex = /^[0-9]{10}$/
+
+                // EMPTY CHECK
+                if (!name || !phone || !cin || !cout) {
+                    alert("Please fill all fields")
+                    return
+                }
+
+                // NAME CHECK
+                if (!nameRegex.test(name)) {
+                    alert("Name should contain only alphabets and spaces")
+                    return
+                }
+
+                // PHONE CHECK
+                if (!phoneRegex.test(phone)) {
+                    alert("Phone must be exactly 10 digits")
+                    return
+                }
+
+                // DATE CHECK
+                if (cin >= cout) {
+                    alert("Check-out must be after Check-in")
+                    return
+                }
+
+                fetch("save-booking.php", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+
+                    body:
+                        "name=" + name +
+                        "&phone=" + phone +
+                        "&room=" + room +
+                        "&checkin=" + cin +
+                        "&checkout=" + cout +
+                        "&total=" + total
+
+                })
+
+                    .then(res => res.text())
+
+                    .then(data => {
+
+                        if (data.trim() === "success") {
+
+                            alert("Booking Successful 🎉")
+
+                            bootstrap.Modal
+                                .getInstance(
+                                    document.getElementById('formModal')
+                                )
+                                .hide()
+
+                            new bootstrap.Toast(
+                                document.getElementById('bookingToast')
+                            ).show()
+
+                            document.getElementById("userName").value = ""
+                            document.getElementById("userPhone").value = ""
+                            document.getElementById("checkIn").value = ""
+                            document.getElementById("checkOut").value = ""
+
+                        } else {
+
+                            alert("Booking Failed")
+
+                        }
+
+                    })
+
+                    .catch(() => {
+
+                        alert("Server Error")
+
+                    })
+            }
+
+        });
+    </script>
 </body>
 
 </html>
